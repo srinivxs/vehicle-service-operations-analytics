@@ -1,0 +1,16 @@
+cut,segment,work_orders,total_cost_variance,avg_cost_variance,overrun_rate_pct,variance_pct_of_estimate,rank_in_cut
+Service type,Battery Health Check,1662,2670586.3,1606.85,45.91,113.21,1
+Service type,Periodic Service,14205,1905612.5,134.15,39.28,11.67,2
+Service type,Electrical Diagnostics,1118,1374004.2,1228.98,33.99,25.35,3
+Service type,Motor & Controller Repair,401,1130518.0,2819.25,28.18,27.18,4
+Service type,Charging System Repair,668,674993.7,1010.47,31.59,21.25,5
+Service type,Accident & Body Repair,585,627682.2,1072.96,28.89,14.22,6
+Service type,Belt Drive Service,933,618662.0,663.09,23.58,19.41,7
+Service type,Software Update Support,925,607520.7,656.78,51.78,196.23,8
+Service type,Suspension Service,562,561128.1,998.45,36.48,31.72,9
+Service type,Brake Service,1638,433244.2,264.5,31.56,15.63,10
+Service type,Tyre Replacement,1395,352540.1,252.72,15.13,8.28,11
+Billing type,Customer Paid,15609,7137565.4,457.27,35.49,22.34,1
+Billing type,Warranty,1211,2381176.5,1966.29,29.73,29.87,2
+Billing type,Service Plan,6379,862342.4,135.18,39.46,11.52,3
+Billing type,Rework (No Charge),893,575407.7,644.35,48.38,77.29,4

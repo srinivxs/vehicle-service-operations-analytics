@@ -1,0 +1,12 @@
+metric,jan_sep_2025,jan_sep_2026,abs_change,pct_change
+Appointments,9324.0,13782.0,4458.0,47.81
+Completed work orders,8414.0,12390.0,3976.0,47.25
+Revenue (INR),28142374.76,39788290.43,11645915.67,41.38
+Profit (INR),6825893.76,9771217.63,2945323.87,43.15
+Profit margin (%),24.25,24.56,0.3,1.25
+Revenue per job (INR),3344.71,3211.32,-133.39,-3.99
+On-time (%),80.68,67.05,-13.62,-16.88
+Avg turnaround (hours),10.62,11.63,1.01,9.55
+Avg rating (1-5),4.12,3.93,-0.19,-4.66
+Parts delay rate (%),4.86,4.62,-0.24,-4.86
+Cancellation rate (%),6.47,6.87,0.4,6.25

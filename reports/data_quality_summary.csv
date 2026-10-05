@@ -1,0 +1,11 @@
+table,raw_rows,exact_duplicates,duplicate_keys,null_cells,columns_with_nulls,clean_rows,rows_removed,pct_retained
+customers,3364,13,13,0,-,3351,13,99.61
+vehicles,5300,0,0,0,-,5300,0,100.0
+service_centers,8,0,0,0,-,8,0,100.0
+technicians,18,0,0,0,-,18,0,100.0
+appointments,26955,160,160,25178,"center_id (41), cancellation_reason (25137)",26769,186,99.31
+work_orders,24213,96,96,72,"technician_id (48), start_time (24)",24092,121,99.5
+parts,39,0,0,0,-,39,0,100.0
+part_usage,46355,0,0,0,-,46190,165,99.64
+financials,24189,72,72,36,parts_cost (36),24092,97,99.6
+feedback,12303,36,36,24,rating (24),12186,117,99.05

@@ -1,0 +1,40 @@
+part_id,part_name,part_category,unit_cost,compatible_models,supplier_lead_days
+P001,Brake Pad Set - Front,Brakes,650,All,3
+P002,Brake Pad Set - Rear,Brakes,600,All,3
+P003,Brake Fluid DOT4 250ml,Brakes,180,All,2
+P004,Brake Disc - Front,Brakes,1450,All,5
+P005,Front Tyre 12-inch,Tyres,1700,All,4
+P006,Rear Tyre 12-inch,Tyres,2100,All,4
+P007,Tubeless Valve Kit,Tyres,90,All,2
+P008,Drive Belt,Drivetrain,2300,All,6
+P009,Belt Pulley Set,Drivetrain,3800,All,7
+P010,12V Auxiliary Battery,Battery & Electrical,2200,All,5
+P011,DC-DC Converter,Battery & Electrical,5500,All,8
+P012,Main Wiring Harness,Battery & Electrical,4200,All,9
+P013,Battery Management System Board,Battery & Electrical,9800,All,10
+P014,Battery Cell Module,Battery & Electrical,18500,All,14
+P015,Battery Thermal Pad Kit,Battery & Electrical,850,All,5
+P016,Portable Charger,Charging,6500,All,7
+P017,Charging Cable,Charging,1400,All,5
+P018,Charging Port Assembly,Charging,2600,All,8
+P019,Onboard Charger Module,Charging,7800,450 Series,12
+P020,Motor Controller - 450 Series,Motor & Controller,14500,450 Series,12
+P021,Motor Controller - Rizta,Motor & Controller,13200,Ather Rizta,12
+P022,Motor Bearing Kit,Motor & Controller,1200,All,6
+P023,Motor Hall Sensor,Motor & Controller,1800,All,8
+P024,Motor Assembly,Motor & Controller,32000,All,18
+P025,TFT Dashboard - 450 Series,Dashboard & Display,11500,450 Series,14
+P026,Dashboard Display - Rizta,Dashboard & Display,9800,Ather Rizta,12
+P027,Handlebar Switch Cluster,Dashboard & Display,1900,All,7
+P028,LED Headlamp Assembly,Body & Lighting,4800,All,8
+P029,Front Panel,Body & Lighting,2700,All,7
+P030,Side Panel Set,Body & Lighting,3400,All,7
+P031,Rear View Mirror Pair,Body & Lighting,650,All,3
+P032,Tail Lamp Assembly,Body & Lighting,1600,All,6
+P033,Apex Body Panel Kit,Body & Lighting,4900,Ather 450 Apex,15
+P034,Front Fork Oil Seal Kit,Suspension,550,All,4
+P035,Rear Shock Absorber,Suspension,3100,All,7
+P036,Front Fork Assembly,Suspension,7200,All,10
+P037,Service Consumables Kit,Consumables,250,All,1
+P038,Fastener Kit,Consumables,120,All,1
+P039,Dust Seal Kit,Consumables,200,All,2

@@ -1,0 +1,23 @@
+kpi_no,kpi,value,unit
+1,Total revenue,78238663.38,INR
+2,Total cost (labour + parts),59112552.0,INR
+3,Profit,19126111.38,INR
+3,Profit margin,24.45,%
+4,Average service cost,2453.62,INR / job
+5,On-time completion,73.2,%
+6,Average turnaround,11.166,hours
+6,Median turnaround,2.57,hours
+7,Average cost variance,454.78,INR / job
+7,Cost overrun rate (> 10% over est.),36.73,%
+7,Total cost variance (actual - est.),10956492.0,INR
+8,Cancellation rate,6.76,%
+8,No-show rate,3.24,%
+9,Technician utilisation,75.63,%
+10,Average customer rating,4.021,1-5
+10,CSAT (rating >= 4),74.54,%
+11,Repeat visit rate (customers),85.67,%
+12,Comeback (rework) rate,4.5,%
+13,Duration variance (actual - est.),0.31,hours / job
+14,Parts delay rate,4.71,%
+15,First-time QC pass rate,93.23,%
+16,Average wait before work starts,1.2,hours

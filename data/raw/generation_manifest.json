@@ -1,0 +1,60 @@
+{
+  "seed": 42,
+  "period": [
+    "2025-01-01",
+    "2026-09-30"
+  ],
+  "row_counts": {
+    "customers": 3364,
+    "vehicles": 5300,
+    "service_centers": 8,
+    "technicians": 18,
+    "appointments": 26955,
+    "work_orders": 24213,
+    "parts": 39,
+    "part_usage": 46355,
+    "financials": 24189,
+    "feedback": 12303
+  },
+  "injected_defects": {
+    "customers": {
+      "region_format_variants": 33,
+      "duplicate_rows": 13
+    },
+    "vehicles": {
+      "impossible_model_year": 21,
+      "impossible_mileage": 15,
+      "model_name_variants": 26
+    },
+    "appointments": {
+      "status_format_variants": 107,
+      "ddmmyyyy_dates": 214,
+      "missing_center_id": 40,
+      "orphan_vehicle_id": 26,
+      "duplicate_rows": 160
+    },
+    "work_orders": {
+      "start_end_swapped": 60,
+      "missing_technician_id": 48,
+      "orphan_technician_id": 24,
+      "missing_start_time": 24,
+      "service_type_format_variants": 120,
+      "duplicate_rows": 96
+    },
+    "financials": {
+      "negative_amounts": 48,
+      "missing_parts_cost": 36,
+      "revenue_decimal_shift_x100": 24,
+      "duplicate_rows": 72
+    },
+    "feedback": {
+      "rating_out_of_range": 49,
+      "missing_rating": 24,
+      "duplicate_rows": 36
+    },
+    "part_usage": {
+      "non_positive_quantity": 92,
+      "orphan_part_id": 23
+    }
+  }
+}

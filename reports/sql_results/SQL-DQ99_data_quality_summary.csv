@@ -1,0 +1,51 @@
+check_id,check_name,check_type,issue_count,status
+SQL-DQ01,Duplicate appointment_id,integrity,0,PASS
+SQL-DQ02,Duplicate work_order_id,integrity,0,PASS
+SQL-DQ03,"Duplicate keys in other tables (customer, vehicle, usage, feedback, financials)",integrity,0,PASS
+SQL-DQ04,Appointments linked to more than one work order,integrity,0,PASS
+SQL-DQ05,Orphan vehicles (customer missing),integrity,0,PASS
+SQL-DQ06,Orphan appointments (vehicle missing),integrity,0,PASS
+SQL-DQ07,Orphan appointments (service centre missing),integrity,0,PASS
+SQL-DQ08,Orphan technicians (service centre missing),integrity,0,PASS
+SQL-DQ09,Orphan work orders (appointment missing),integrity,0,PASS
+SQL-DQ10,Work orders with a technician_id that is not in the technician master,integrity,0,PASS
+SQL-DQ11,Orphan part_usage rows (work order missing),integrity,0,PASS
+SQL-DQ12,Orphan part_usage rows (part missing),integrity,0,PASS
+SQL-DQ13,Orphan financials (work order missing),integrity,0,PASS
+SQL-DQ14,Orphan feedback (work order missing),integrity,0,PASS
+SQL-DQ15,Work orders without a financials row,integrity,0,PASS
+SQL-DQ16,Null required fields in appointments,integrity,0,PASS
+SQL-DQ17,Null required fields in work_orders (technician_id and start_time are optional by design),integrity,0,PASS
+SQL-DQ18,Null required fields in financials,integrity,0,PASS
+SQL-DQ19,Null required fields in feedback,integrity,0,PASS
+SQL-DQ20,Null required fields in customers / vehicles (mileage_km is optional by design),integrity,0,PASS
+SQL-DQ21,Work orders where end_time is earlier than start_time,integrity,0,PASS
+SQL-DQ22,Work orders where end_time is earlier than check_in_time,integrity,0,PASS
+SQL-DQ23,Work orders where start_time is earlier than check_in_time,integrity,0,PASS
+SQL-DQ24,Work orders promised before check-in,integrity,0,PASS
+SQL-DQ25,"Negative costs or revenue (financials, parts, technicians)",integrity,0,PASS
+SQL-DQ26,Part usage with zero or negative quantity,integrity,0,PASS
+SQL-DQ27,"Negative or zero durations (estimated_hours <= 0, actual_hours < 0, parts_wait_hours < 0)",integrity,0,PASS
+SQL-DQ28,Customer ratings outside 1-5,integrity,0,PASS
+SQL-DQ29,"Values outside allowed domains (status, billing_type, customer_type, region, skill_level)",integrity,0,PASS
+SQL-DQ30,Appointments scheduled outside the reporting period (2025-01-01..2026-09-30),integrity,0,PASS
+SQL-DQ31,Appointments booked after their scheduled date,integrity,0,PASS
+SQL-DQ32,Work orders checked in outside the reporting period,integrity,0,PASS
+SQL-DQ33,Work orders whose check-in date differs from the scheduled date by more than 7 days,integrity,0,PASS
+SQL-DQ34,Feedback dated before the work order finished,integrity,0,PASS
+SQL-DQ35,"Vehicles purchased after the end of the reporting period, or before the customer registered (information only)",informational,0,PASS
+SQL-DQ36,"Model year earlier than model launch (450X >= 2020, Apex/Rizta >= 2024)",integrity,0,PASS
+SQL-DQ37,Model year more than 1 year after purchase year,integrity,0,PASS
+SQL-DQ38,"Implausible mileage (negative, or above 250 km per day since purchase)",integrity,0,PASS
+SQL-DQ39,Odometer reading lower than the same vehicle at its previous visit (information only),informational,0,PASS
+SQL-DQ40,Completed appointments without a work order,integrity,0,PASS
+SQL-DQ41,Work orders attached to a Cancelled / No-Show appointment,integrity,0,PASS
+SQL-DQ42,Cancelled appointments without a cancellation reason (information only),informational,0,PASS
+SQL-DQ43,"Financial parts_cost differs from SUM(part_usage.quantity x parts.unit_cost) by more than INR 1 (reconciliation, information only)",informational,114,INFO
+SQL-DQ44,Rework (No Charge) rows with non-zero revenue,integrity,0,PASS
+SQL-DQ45,"Revenue above 10x job cost and INR 50,000 (possible decimal-shift remnants)",integrity,0,PASS
+SQL-DQ46,"Work orders without an assigned technician (documented gap, excluded from technician KPIs)",informational,72,INFO
+SQL-DQ47,"Work orders without a recorded start_time (documented gap, excluded from wait KPI)",informational,23,INFO
+SQL-DQ48,Vehicles with unknown mileage (set to NULL during cleaning),informational,15,INFO
+SQL-DQ49,Appointment slot outside shop hours (09:00-19:00) or not a valid time,integrity,0,PASS
+SQL-DQ50,Completed work orders without customer feedback (rating coverage gap),informational,11906,INFO

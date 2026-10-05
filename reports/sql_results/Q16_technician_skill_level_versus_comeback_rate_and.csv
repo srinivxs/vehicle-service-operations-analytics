@@ -1,0 +1,5 @@
+skill_level,technicians,jobs,comeback_rate_pct,qc_first_pass_pct,avg_duration_variance_hours,on_time_pct,avg_rating,avg_profit_per_job
+Junior,4,6323,5.54,90.62,0.648,65.59,3.954,805.28
+Mid,4,6052,4.82,92.53,0.344,70.72,3.959,842.48
+Senior,8,9526,3.65,94.78,0.139,78.58,4.091,781.54
+Master,2,2119,4.34,96.13,-0.021,78.72,4.07,672.96

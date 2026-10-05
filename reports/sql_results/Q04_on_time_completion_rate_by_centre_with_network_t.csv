@@ -1,0 +1,10 @@
+center_name,work_orders,on_time_jobs,on_time_pct,avg_hours_late_when_late,pct_of_late_jobs_with_parts_delay
+Pune - Baner,2117,1759,83.09,36.31,25.7
+Hyderabad - Gachibowli,2239,1825,81.51,32.35,19.32
+Bengaluru - Whitefield,3894,3064,78.69,21.3,14.46
+Kolkata - Salt Lake,2139,1665,77.84,68.44,50.63
+Bengaluru - Indiranagar,4117,3100,75.3,21.96,14.55
+Delhi - Saket,2843,1919,67.5,29.31,18.4
+Chennai - Anna Nagar,3409,2229,65.39,23.0,12.37
+Mumbai - Andheri,3334,2074,62.21,18.43,10.95
+ALL CENTRES,24092,17635,73.2,27.3,17.56

@@ -1,0 +1,9 @@
+center_name,work_orders,avg_turnaround_hours,median_turnaround_hours,p90_turnaround_hours,same_day_return_pct,speed_rank
+Bengaluru - Whitefield,3894,8.2,2.46,7.94,90.1,1
+Bengaluru - Indiranagar,4117,9.32,2.6,17.73,88.0,2
+Hyderabad - Gachibowli,2239,9.6,2.4,7.84,90.3,3
+Pune - Baner,2117,9.68,2.25,16.44,89.7,4
+Mumbai - Andheri,3334,11.21,2.94,22.07,83.6,5
+Chennai - Anna Nagar,3409,12.02,2.78,22.57,84.4,6
+Delhi - Saket,2843,13.51,2.75,41.46,84.9,7
+Kolkata - Salt Lake,2139,18.69,2.34,49.61,84.2,8

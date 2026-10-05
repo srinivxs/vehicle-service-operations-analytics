@@ -1,0 +1,400 @@
+// =====================================================================================
+// Vehicle Service Operations Analytics - DAX measures (plain text)
+// Synthetic data; EV two-wheeler service network modelled on Ather-style models. Not affiliated with Ather Energy.
+//
+// Model tables (names as loaded):
+//   fact_service, fact_appointments, fact_technician_month, part_usage, parts,
+//   DimDate (dim_date.csv, marked as date table), DimCentre, DimTechnician, DimServiceType, DimModel
+// Measures live in a dedicated empty table named "_Measures" (Enter Data -> blank table, hide its column).
+// Each measure is preceded by:  // Folder: <Display folder> | Format: <format string>
+// Rates are stored as fractions (0-1) and formatted as percentages.
+// These definitions reproduce src/kpis.py exactly (see powerbi/README.md section 9 for reconciliation values).
+// =====================================================================================
+
+
+// ------------------------------- 0. CALCULATED COLUMNS -------------------------------
+// fact_service[Total Cost]  (row level; optional - measures below do not depend on it)
+// Total Cost = fact_service[labor_cost] + fact_service[parts_cost]
+
+// fact_service[Delay Band]  - bands of late_hours (hours past the promised time), right-closed like src/kpis.py
+// Delay Band =
+//     SWITCH(
+//         TRUE(),
+//         fact_service[late_hours] <= 0, "On time",
+//         fact_service[late_hours] <= 1, "0-1h",
+//         fact_service[late_hours] <= 2, "1-2h",
+//         fact_service[late_hours] <= 4, "2-4h",
+//         fact_service[late_hours] <= 8, "4-8h",
+//         fact_service[late_hours] <= 24, "8-24h",
+//         "> 24h"
+//     )
+// fact_service[Delay Band Sort] =
+//     SWITCH(fact_service[Delay Band], "On time", 1, "0-1h", 2, "1-2h", 3, "2-4h", 4, "4-8h", 5, "8-24h", 6, 7)
+//   -> select Delay Band, Sort by column = Delay Band Sort
+
+// fact_service[Turnaround Band]
+// Turnaround Band =
+//     SWITCH(
+//         TRUE(),
+//         fact_service[turnaround_hours] <= 2, "<= 2h",
+//         fact_service[turnaround_hours] <= 4, "2-4h",
+//         fact_service[turnaround_hours] <= 8, "4-8h",
+//         fact_service[turnaround_hours] <= 24, "8-24h",
+//         fact_service[turnaround_hours] <= 72, "24-72h",
+//         "> 72h"
+//     )
+// fact_service[Turnaround Band Sort] =
+//     SWITCH(fact_service[Turnaround Band], "<= 2h", 1, "2-4h", 2, "4-8h", 3, "8-24h", 4, "24-72h", 5, 6)
+
+// fact_technician_month[month_start]  (Power Query: Date.FromText([month] & "-01"))
+// part_usage[Line Cost] = part_usage[quantity] * RELATED(parts[unit_cost])
+
+// DimDate[Weekday Sort] = WEEKDAY(DimDate[date], 2)      -> sort DimDate[weekday_name] by it
+// DimDate[month_start]  = DATE(YEAR(DimDate[date]), MONTH(DimDate[date]), 1)
+// DimDate[Month Label]  = FORMAT(DimDate[date], "mmm yy") -> sort by DimDate[month_start]
+
+
+// ------------------------------- 1. FINANCIAL -------------------------------
+// Folder: 1 Financial | Format: #,0
+Total Revenue = SUM ( fact_service[revenue] )
+
+// Folder: 1 Financial | Format: #,0
+Labour Cost = SUM ( fact_service[labor_cost] )
+
+// Folder: 1 Financial | Format: #,0
+Parts Cost = SUM ( fact_service[parts_cost] )
+
+// Folder: 1 Financial | Format: #,0
+Total Cost = [Labour Cost] + [Parts Cost]
+
+// Folder: 1 Financial | Format: #,0
+Profit = [Total Revenue] - [Total Cost]
+
+// Folder: 1 Financial | Format: 0.0%
+Profit Margin % = DIVIDE ( [Profit], [Total Revenue] )
+
+// Folder: 1 Financial | Format: #,0
+Avg Service Cost = DIVIDE ( [Total Cost], [Completed Services] )
+
+// Folder: 1 Financial | Format: 0.0%
+Parts Share of Cost % = DIVIDE ( [Parts Cost], [Total Cost] )
+
+// Folder: 1 Financial | Format: #,0
+Total Estimated Cost = SUM ( fact_service[estimated_cost] )
+
+// Folder: 1 Financial | Format: #,0
+Cost Variance = SUM ( fact_service[cost_variance] )
+
+// Folder: 1 Financial | Format: 0.0%
+Cost Variance % = DIVIDE ( [Cost Variance], [Total Estimated Cost] )
+
+// Folder: 1 Financial | Format: 0.0%
+Cost Overrun Rate =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( fact_service ), fact_service[cost_overrun_flag] = TRUE () ),
+    [Completed Services]
+)
+
+// Folder: 1 Financial | Format: #,0
+Parts Cost (Catalogue) = SUMX ( part_usage, part_usage[quantity] * RELATED ( parts[unit_cost] ) )
+
+
+// ------------------------------- 2. OPERATIONS -------------------------------
+// Folder: 2 Operations | Format: #,0
+Completed Services = COUNTROWS ( fact_service )
+
+// Folder: 2 Operations | Format: 0.0%
+On-Time % =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( fact_service ), fact_service[on_time_flag] = TRUE () ),
+    [Completed Services]
+)
+
+// Folder: 2 Operations | Format: 0.0 "h"
+Avg Turnaround Hours = AVERAGE ( fact_service[turnaround_hours] )
+
+// Folder: 2 Operations | Format: 0.0 "h"
+Median Turnaround Hours = MEDIAN ( fact_service[turnaround_hours] )
+
+// Folder: 2 Operations | Format: 0.0 "h"
+Avg Wait Hours = AVERAGE ( fact_service[wait_hours] )
+
+// Folder: 2 Operations | Format: 0.00 "h"
+Avg Estimated Hours = AVERAGE ( fact_service[estimated_hours] )
+
+// Folder: 2 Operations | Format: 0.00 "h"
+Avg Actual Hours = AVERAGE ( fact_service[actual_hours] )
+
+// Folder: 2 Operations | Format: 0.00 "h"
+Avg Duration Variance Hours = AVERAGE ( fact_service[duration_variance_hours] )
+
+// Folder: 2 Operations | Format: 0.0%
+Parts Delay Rate =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( fact_service ), fact_service[parts_delay_flag] = TRUE () ),
+    [Completed Services]
+)
+
+// Folder: 2 Operations | Format: 0.0%
+QC First-Pass % =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( fact_service ), fact_service[qc_passed_first_time] = TRUE () ),
+    [Completed Services]
+)
+
+// Folder: 2 Operations | Format: 0.0%
+Comeback Rate =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( fact_service ), fact_service[caused_repeat_visit] = TRUE () ),
+    [Completed Services]
+)
+
+// Folder: 2 Operations | Format: #,0
+Service Hours = SUM ( fact_technician_month[service_hours] )
+
+// Folder: 2 Operations | Format: #,0
+Available Hours = SUM ( fact_technician_month[available_hours] )
+
+// Folder: 2 Operations | Format: 0.0%
+Technician Utilisation % = DIVIDE ( [Service Hours], [Available Hours] )
+// Note: filtered by DimDate (month overlap), DimCentre and DimTechnician only. DimServiceType / DimModel
+// do not relate to fact_technician_month, so those slicers do not change this measure (same as the Streamlit app).
+
+
+// ------------------------------- 3. CUSTOMER -------------------------------
+// Folder: 3 Customer | Format: 0.00
+Avg Rating = AVERAGE ( fact_service[rating] )
+
+// Folder: 3 Customer | Format: #,0
+Rated Services = COUNT ( fact_service[rating] )
+
+// Folder: 3 Customer | Format: 0.0%
+CSAT % =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( fact_service ), fact_service[rating] >= 4 ),
+    [Rated Services]
+)
+
+// Folder: 3 Customer | Format: #,0
+Appointments = COUNTROWS ( fact_appointments )
+
+// Folder: 3 Customer | Format: #,0
+Cancelled Appointments =
+CALCULATE ( COUNTROWS ( fact_appointments ), fact_appointments[status] = "Cancelled" )
+
+// Folder: 3 Customer | Format: #,0
+No-Show Appointments =
+CALCULATE ( COUNTROWS ( fact_appointments ), fact_appointments[status] = "No-Show" )
+
+// Folder: 3 Customer | Format: 0.0%
+Cancellation Rate = DIVIDE ( [Cancelled Appointments], [Appointments] )
+
+// Folder: 3 Customer | Format: 0.0%
+No-Show Rate = DIVIDE ( [No-Show Appointments], [Appointments] )
+
+// Folder: 3 Customer | Format: #,0
+Customers = DISTINCTCOUNT ( fact_service[customer_id] )
+
+// Folder: 3 Customer | Format: #,0
+Repeat Customers =
+COUNTROWS (
+    FILTER (
+        ADDCOLUMNS ( VALUES ( fact_service[customer_id] ), "@Orders", CALCULATE ( COUNTROWS ( fact_service ) ) ),
+        [@Orders] >= 2
+    )
+)
+
+// Folder: 3 Customer | Format: 0.0%
+Repeat Visit Rate = DIVIDE ( [Repeat Customers], [Customers] )
+// Customers with >= 2 work orders / customers with >= 1, counted inside the current filter context.
+
+
+// ------------------------------- 4. TIME INTELLIGENCE -------------------------------
+// Folder: 4 Time Intelligence | Format: #,0
+Revenue PM = CALCULATE ( [Total Revenue], DATEADD ( DimDate[date], -1, MONTH ) )
+
+// Folder: 4 Time Intelligence | Format: +0.0%;-0.0%;0.0%
+Revenue MoM % = DIVIDE ( [Total Revenue] - [Revenue PM], [Revenue PM] )
+
+// Folder: 4 Time Intelligence | Format: #,0
+Profit PM = CALCULATE ( [Profit], DATEADD ( DimDate[date], -1, MONTH ) )
+
+// Folder: 4 Time Intelligence | Format: +0.0%;-0.0%;0.0%
+Profit MoM % = DIVIDE ( [Profit] - [Profit PM], [Profit PM] )
+
+// Folder: 4 Time Intelligence | Format: #,0
+Revenue PY = CALCULATE ( [Total Revenue], SAMEPERIODLASTYEAR ( DimDate[date] ) )
+
+// Folder: 4 Time Intelligence | Format: +0.0%;-0.0%;0.0%
+Revenue YoY % = DIVIDE ( [Total Revenue] - [Revenue PY], [Revenue PY] )
+
+// Folder: 4 Time Intelligence | Format: #,0
+Profit PY = CALCULATE ( [Profit], SAMEPERIODLASTYEAR ( DimDate[date] ) )
+
+// Folder: 4 Time Intelligence | Format: +0.0%;-0.0%;0.0%
+Profit YoY % = DIVIDE ( [Profit] - [Profit PY], [Profit PY] )
+
+// Folder: 4 Time Intelligence | Format: #,0
+Revenue YTD = TOTALYTD ( [Total Revenue], DimDate[date] )
+
+
+// ------------------------------- 5. DISPLAY (INR lakh / crore) -------------------------------
+// Power BI number formats cannot scale by 1e5 / 1e7, so KPI cards use these text measures.
+// Folder: 5 Display | Format: text
+INR Short Revenue =
+VAR v = [Total Revenue]
+RETURN
+    IF (
+        ISBLANK ( v ), "-",
+        IF ( ABS ( v ) >= 10000000, FORMAT ( v / 10000000, "\₹0.0" ) & " Cr",
+        IF ( ABS ( v ) >= 100000, FORMAT ( v / 100000, "\₹0.0" ) & " L", FORMAT ( v, "\₹#,0" ) ) )
+    )
+
+// Folder: 5 Display | Format: text
+INR Short Cost =
+VAR v = [Total Cost]
+RETURN
+    IF (
+        ISBLANK ( v ), "-",
+        IF ( ABS ( v ) >= 10000000, FORMAT ( v / 10000000, "\₹0.0" ) & " Cr",
+        IF ( ABS ( v ) >= 100000, FORMAT ( v / 100000, "\₹0.0" ) & " L", FORMAT ( v, "\₹#,0" ) ) )
+    )
+
+// Folder: 5 Display | Format: text
+INR Short Profit =
+VAR v = [Profit]
+RETURN
+    IF (
+        ISBLANK ( v ), "-",
+        IF ( ABS ( v ) >= 10000000, FORMAT ( v / 10000000, "\₹0.0" ) & " Cr",
+        IF ( ABS ( v ) >= 100000, FORMAT ( v / 100000, "\₹0.0" ) & " L", FORMAT ( v, "\₹#,0" ) ) )
+    )
+
+
+// ------------------------------- 6. RANKING / INSIGHTS -------------------------------
+// Percentile rank of a centre among the centres currently in the report filter (1 = best), matching
+// pandas rank(pct=True) for tie-free data. Lower-is-better metrics use DESC.
+// Folder: 6 Ranking | Format: 0
+Centre Performance Index =
+VAR Centres = ALLSELECTED ( DimCentre[center_name] )
+VAR N = COUNTROWS ( Centres )
+VAR RankOnTime = RANKX ( Centres, [On-Time %], , ASC, Skip )
+VAR RankRating = RANKX ( Centres, [Avg Rating], , ASC, Skip )
+VAR RankMargin = RANKX ( Centres, [Profit Margin %], , ASC, Skip )
+VAR RankTurn = RANKX ( Centres, [Avg Turnaround Hours], , DESC, Skip )
+VAR RankCancel = RANKX ( Centres, [Cancellation Rate], , DESC, Skip )
+RETURN
+    IF (
+        HASONEVALUE ( DimCentre[center_name] ),
+        100 * DIVIDE ( RankOnTime + RankRating + RankMargin + RankTurn + RankCancel, 5 * N )
+    )
+
+// Folder: 6 Ranking | Format: 0
+Centre Rank =
+IF (
+    HASONEVALUE ( DimCentre[center_name] ),
+    RANKX ( ALLSELECTED ( DimCentre[center_name] ), [Centre Performance Index], , DESC, Skip )
+)
+
+// Folder: 6 Ranking | Format: text
+Key Insight - Executive =
+VAR T = ADDCOLUMNS ( VALUES ( DimCentre[center_name] ), "@OnTime", [On-Time %] )
+VAR Worst = TOPN ( 1, FILTER ( T, NOT ISBLANK ( [@OnTime] ) ), [@OnTime], ASC )
+RETURN
+    IF (
+        COUNTROWS ( T ) < 2,
+        BLANK (),
+        MAXX ( Worst, DimCentre[center_name] ) & " has the lowest on-time rate at "
+            & FORMAT ( MINX ( Worst, [@OnTime] ), "0.0%" ) & " (network " & FORMAT ( [On-Time %], "0.0%" ) & ")."
+    )
+
+// Folder: 6 Ranking | Format: text
+Key Insight - Operations =
+VAR T = ADDCOLUMNS ( VALUES ( DimCentre[center_name] ), "@Turn", [Avg Turnaround Hours] )
+VAR Slowest = TOPN ( 1, FILTER ( T, NOT ISBLANK ( [@Turn] ) ), [@Turn], DESC )
+RETURN
+    IF (
+        COUNTROWS ( T ) < 2,
+        BLANK (),
+        MAXX ( Slowest, DimCentre[center_name] ) & " is slowest, averaging "
+            & FORMAT ( MAXX ( Slowest, [@Turn] ), "0.0" ) & " h turnaround."
+    )
+
+// Folder: 6 Ranking | Format: text
+Key Insight - Financial =
+VAR T = ADDCOLUMNS ( VALUES ( DimServiceType[service_type] ), "@Margin", [Profit Margin %] )
+VAR Best = TOPN ( 1, FILTER ( T, NOT ISBLANK ( [@Margin] ) ), [@Margin], DESC )
+VAR Worst = TOPN ( 1, FILTER ( T, NOT ISBLANK ( [@Margin] ) ), [@Margin], ASC )
+RETURN
+    IF (
+        COUNTROWS ( T ) < 2,
+        BLANK (),
+        MAXX ( Best, DimServiceType[service_type] ) & " earns the best margin (" & FORMAT ( MAXX ( Best, [@Margin] ), "0.0%" )
+            & ") while " & MAXX ( Worst, DimServiceType[service_type] ) & " earns the lowest ("
+            & FORMAT ( MAXX ( Worst, [@Margin] ), "0.0%" ) & ")."
+    )
+
+// Folder: 6 Ranking | Format: text
+Key Insight - Customer =
+VAR T = ADDCOLUMNS ( VALUES ( DimCentre[center_name] ), "@Rating", [Avg Rating] )
+VAR Lowest = TOPN ( 1, FILTER ( T, NOT ISBLANK ( [@Rating] ) ), [@Rating], ASC )
+RETURN
+    IF (
+        COUNTROWS ( T ) < 2,
+        BLANK (),
+        MAXX ( Lowest, DimCentre[center_name] ) & " has the lowest average rating ("
+            & FORMAT ( MINX ( Lowest, [@Rating] ), "0.00" ) & " / 5)."
+    )
+
+
+// ------------------------------- 7. DYNAMIC TITLES & CONDITIONAL FORMATTING -------------------------------
+// Folder: 7 Titles | Format: text
+Selection Label =
+VAR Centre =
+    IF ( ISFILTERED ( DimCentre[center_name] ),
+         IF ( HASONEVALUE ( DimCentre[center_name] ), SELECTEDVALUE ( DimCentre[center_name] ), "Selected centres" ),
+         "All centres" )
+VAR Region =
+    IF ( ISFILTERED ( DimCentre[region] ),
+         IF ( HASONEVALUE ( DimCentre[region] ), SELECTEDVALUE ( DimCentre[region] ), "Selected regions" ),
+         "All regions" )
+VAR D0 = MIN ( DimDate[date] )
+VAR D1 = MAX ( DimDate[date] )
+RETURN
+    Centre & " | " & Region & " | " & FORMAT ( D0, "dd mmm yyyy" ) & " - " & FORMAT ( D1, "dd mmm yyyy" )
+
+// Folder: 7 Titles | Format: text
+Title - Revenue and Profit Trend = "Monthly revenue and profit - " & [Selection Label]
+
+// Folder: 7 Titles | Format: text
+Title - Turnaround by Centre = "Turnaround time by centre (hours) - " & [Selection Label]
+
+// Folder: 7 Titles | Format: text
+Title - Profit by Centre = "Profit by service centre - " & [Selection Label]
+
+// Folder: 7 Titles | Format: text
+Title - Rating Trend = "Rating trend - " & [Selection Label]
+
+// Folder: 7 Titles | Format: text
+Footer Disclaimer =
+"Synthetic data for demonstration. Modelled on an EV two-wheeler service network; not affiliated with Ather Energy. Amounts in INR."
+
+// Conditional-format helpers (use "Format by: Field value" on the table / bar colour)
+// Folder: 7 Titles | Format: text
+Colour - On-Time vs Network =
+VAR Network = CALCULATE ( [On-Time %], ALLSELECTED ( DimCentre ) )
+RETURN IF ( [On-Time %] >= Network, "#00A67E", "#EB6834" )
+
+// Folder: 7 Titles | Format: text
+Colour - Profit Sign = IF ( [Profit] >= 0, "#00A67E", "#EB6834" )
+
+// Folder: 7 Titles | Format: text
+Colour - Skill Level =
+SWITCH (
+    SELECTEDVALUE ( DimTechnician[skill_level] ),
+    "Junior", "#EB6834",
+    "Mid", "#2A78D6",
+    "Senior", "#00A67E",
+    "Master", "#4A3AA7",
+    "#A9B4B0"
+)

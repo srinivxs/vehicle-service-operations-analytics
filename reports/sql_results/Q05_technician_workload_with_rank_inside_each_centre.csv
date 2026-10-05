@@ -1,0 +1,19 @@
+center_name,technician_id,skill_level,jobs,service_hours,utilisation_pct,hours_rank_in_centre,jobs_dense_rank_in_centre,pct_of_centre_hours
+Bengaluru - Indiranagar,T002,Junior,1492,3547.3,92.6,1,1,38.4
+Bengaluru - Indiranagar,T003,Mid,1411,3084.5,80.6,2,2,33.4
+Bengaluru - Indiranagar,T001,Senior,1201,2601.0,67.9,3,3,28.2
+Bengaluru - Whitefield,T005,Junior,1469,3510.9,91.7,1,1,41.6
+Bengaluru - Whitefield,T006,Senior,1201,2466.5,64.4,2,3,29.2
+Bengaluru - Whitefield,T004,Senior,1213,2462.1,64.3,3,2,29.2
+Chennai - Anna Nagar,T007,Mid,1809,3930.1,102.6,1,1,54.1
+Chennai - Anna Nagar,T008,Senior,1592,3333.3,87.1,2,2,45.9
+Delhi - Saket,T016,Junior,1679,3994.2,104.3,1,1,63.0
+Delhi - Saket,T015,Master,1156,2344.4,61.2,2,2,37.0
+Hyderabad - Gachibowli,T009,Mid,1192,2596.9,67.8,1,1,54.6
+Hyderabad - Gachibowli,T010,Senior,1039,2161.8,56.5,2,2,45.4
+Kolkata - Salt Lake,T018,Senior,1076,2151.1,56.2,1,1,50.6
+Kolkata - Salt Lake,T017,Senior,1056,2096.1,54.7,2,2,49.4
+Mumbai - Andheri,T013,Junior,1683,4112.2,107.4,1,1,52.6
+Mumbai - Andheri,T014,Mid,1640,3703.4,96.7,2,2,47.4
+Pune - Baner,T011,Senior,1148,2246.6,58.7,1,1,55.7
+Pune - Baner,T012,Master,963,1784.4,46.6,2,2,44.3

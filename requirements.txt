@@ -1,0 +1,12 @@
+# Runtime dependencies (pipeline, database loader, dashboard).
+# Tested with Python 3.11 and the versions below; lower bounds reflect APIs the code relies on
+# (pandas 3 string dtype / copy-on-write, Streamlit st.navigation and width="stretch").
+pandas>=3.0,<4          # tested 3.0.6
+numpy>=2.0,<3           # tested 2.4.6
+scipy>=1.13,<2          # tested 1.17.1
+matplotlib>=3.8,<4      # tested 3.11.2
+seaborn>=0.13,<0.14     # tested 0.13.2
+plotly>=6.0,<8          # tested 7.1.0
+streamlit>=1.50,<2      # tested 1.65.0
+psycopg[binary]>=3.2,<4 # tested 3.3.6
+python-dotenv>=1.0,<2   # tested 1.2.4

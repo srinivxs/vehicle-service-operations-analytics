@@ -1,0 +1,12 @@
+service_type,work_orders,revenue,profit,profit_margin_pct,avg_service_cost,revenue_rank,profit_rank,revenue_share_pct,cumulative_revenue_share_pct
+Periodic Service,14205,25437124.99,7202007.49,28.31,1283.71,1,1,32.51,32.51
+Electrical Diagnostics,1118,7961404.91,1167678.21,14.67,6076.68,2,6,10.18,42.69
+Accident & Body Repair,585,7115324.23,2072512.03,29.13,8620.19,3,2,9.09,51.78
+Battery Health Check,1662,6191145.96,1161564.66,18.76,3026.22,4,7,7.91,59.7
+Tyre Replacement,1395,6148902.75,1537227.65,25.0,3305.86,5,4,7.86,67.55
+Motor & Controller Repair,401,6077717.14,788194.14,12.97,13190.83,6,9,7.77,75.32
+Belt Drive Service,933,5219389.68,1412697.68,27.07,4080.06,7,5,6.67,81.99
+Brake Service,1638,4848337.33,1642783.13,33.88,1956.99,8,3,6.2,88.19
+Charging System Repair,668,4621695.07,770881.37,16.68,5764.69,9,10,5.91,94.1
+Suspension Service,562,3317258.6,987318.0,29.76,4145.8,10,8,4.24,98.34
+Software Update Support,925,1300362.72,383247.02,29.47,991.48,11,11,1.66,100.0

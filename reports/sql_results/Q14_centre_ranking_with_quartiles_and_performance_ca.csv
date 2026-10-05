@@ -1,0 +1,9 @@
+overall_rank,center_name,composite_score,quartile,performance_category,on_time_pct,avg_rating,profit_margin_pct,comeback_rate_pct,avg_turnaround_hours,utilisation_pct
+1,Hyderabad - Gachibowli,0.829,1,Leader,81.51,4.138,25.15,3.35,9.6,62.1
+2,Bengaluru - Whitefield,0.714,1,Leader,78.69,4.125,24.76,4.21,8.2,73.5
+3,Pune - Baner,0.657,2,Solid,83.09,4.137,21.93,3.35,9.68,52.6
+4,Bengaluru - Indiranagar,0.629,2,Solid,75.3,4.062,25.17,4.74,9.32,80.4
+5,Kolkata - Salt Lake,0.429,3,Watch,77.84,4.052,23.8,3.69,18.69,55.5
+6,Mumbai - Andheri,0.286,3,Watch,62.21,3.863,27.06,5.46,11.21,102.1
+7,Delhi - Saket,0.229,4,Needs attention,67.5,3.942,23.69,5.31,13.51,82.8
+8,Chennai - Anna Nagar,0.2,4,Needs attention,65.39,3.891,22.92,4.93,12.02,94.9

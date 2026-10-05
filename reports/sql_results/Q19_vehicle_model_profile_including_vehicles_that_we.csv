@@ -1,0 +1,4 @@
+model,vehicles_in_base,never_serviced,never_serviced_pct,visits,visits_per_vehicle,revenue_per_vehicle,profit_margin_pct,avg_rating,comeback_rate_pct,jobs_on_2plus_year_old_vehicles_pct
+Ather 450X,2405,70,2.9,13906.0,5.78,20356.12,24.33,4.016,4.77,67.0
+Ather Rizta,2499,233,9.3,8897.0,3.56,9837.9,24.42,4.029,4.14,2.7
+Ather 450 Apex,396,29,7.3,1289.0,3.26,11861.83,25.82,4.012,4.19,6.8

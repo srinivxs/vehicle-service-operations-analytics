@@ -1,0 +1,5 @@
+parts_wait_band,work_orders,on_time_pct,on_time_pts_vs_no_wait,avg_turnaround_hours,avg_rating,rating_vs_no_wait,rated_jobs,avg_cost_variance
+1. No parts wait,22958,76.81,0.0,5.05,4.083,0.0,11514,415.24
+2. Up to 3 days,368,0.0,-76.81,53.68,3.21,-0.873,219,169.69
+3. 3 to 7 days,472,0.0,-76.81,123.42,2.871,-1.212,286,1032.05
+4. Over 7 days,294,0.0,-76.81,255.02,2.749,-1.334,167,2971.86

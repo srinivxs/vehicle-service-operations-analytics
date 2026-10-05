@@ -1,0 +1,169 @@
+center_name,year_month,service_hours,available_hours,utilisation_pct,utilisation_3m_avg_pct
+Bengaluru - Indiranagar,2025-01,308.6,567.0,54.4,54.4
+Bengaluru - Indiranagar,2025-02,262.0,504.0,52.0,53.2
+Bengaluru - Indiranagar,2025-03,308.9,546.0,56.6,54.3
+Bengaluru - Indiranagar,2025-04,336.4,546.0,61.6,56.7
+Bengaluru - Indiranagar,2025-05,379.1,567.0,66.9,61.7
+Bengaluru - Indiranagar,2025-06,342.1,525.0,65.2,64.5
+Bengaluru - Indiranagar,2025-07,433.1,567.0,76.4,69.5
+Bengaluru - Indiranagar,2025-08,465.0,546.0,85.2,75.6
+Bengaluru - Indiranagar,2025-09,441.8,546.0,80.9,80.8
+Bengaluru - Indiranagar,2025-10,417.8,567.0,73.7,79.9
+Bengaluru - Indiranagar,2025-11,398.4,525.0,75.9,76.8
+Bengaluru - Indiranagar,2025-12,477.3,567.0,84.2,77.9
+Bengaluru - Indiranagar,2026-01,442.3,567.0,78.0,79.4
+Bengaluru - Indiranagar,2026-02,467.0,504.0,92.7,85.0
+Bengaluru - Indiranagar,2026-03,445.4,546.0,81.6,84.1
+Bengaluru - Indiranagar,2026-04,508.6,546.0,93.1,89.1
+Bengaluru - Indiranagar,2026-05,472.3,546.0,86.5,87.1
+Bengaluru - Indiranagar,2026-06,524.9,546.0,96.1,91.9
+Bengaluru - Indiranagar,2026-07,630.3,567.0,111.2,97.9
+Bengaluru - Indiranagar,2026-08,613.8,546.0,112.4,106.6
+Bengaluru - Indiranagar,2026-09,557.9,546.0,102.2,108.6
+Bengaluru - Whitefield,2025-01,231.1,567.0,40.7,40.7
+Bengaluru - Whitefield,2025-02,278.0,504.0,55.2,48.0
+Bengaluru - Whitefield,2025-03,311.9,546.0,57.1,51.0
+Bengaluru - Whitefield,2025-04,304.8,546.0,55.8,56.0
+Bengaluru - Whitefield,2025-05,355.4,567.0,62.7,58.5
+Bengaluru - Whitefield,2025-06,365.8,525.0,69.7,62.7
+Bengaluru - Whitefield,2025-07,438.5,567.0,77.3,69.9
+Bengaluru - Whitefield,2025-08,396.1,546.0,72.5,73.2
+Bengaluru - Whitefield,2025-09,386.2,546.0,70.7,73.5
+Bengaluru - Whitefield,2025-10,406.3,567.0,71.7,71.6
+Bengaluru - Whitefield,2025-11,368.4,525.0,70.2,70.9
+Bengaluru - Whitefield,2025-12,381.9,567.0,67.3,69.7
+Bengaluru - Whitefield,2026-01,350.6,567.0,61.8,66.5
+Bengaluru - Whitefield,2026-02,344.4,504.0,68.3,65.8
+Bengaluru - Whitefield,2026-03,448.4,546.0,82.1,70.8
+Bengaluru - Whitefield,2026-04,395.0,546.0,72.3,74.3
+Bengaluru - Whitefield,2026-05,491.4,546.0,90.0,81.5
+Bengaluru - Whitefield,2026-06,528.1,546.0,96.7,86.4
+Bengaluru - Whitefield,2026-07,545.6,567.0,96.2,94.3
+Bengaluru - Whitefield,2026-08,533.5,546.0,97.7,96.9
+Bengaluru - Whitefield,2026-09,578.3,546.0,105.9,99.9
+Chennai - Anna Nagar,2025-01,203.7,378.0,53.9,53.9
+Chennai - Anna Nagar,2025-02,221.8,336.0,66.0,59.9
+Chennai - Anna Nagar,2025-03,220.5,364.0,60.6,60.2
+Chennai - Anna Nagar,2025-04,250.7,364.0,68.9,65.2
+Chennai - Anna Nagar,2025-05,241.7,378.0,63.9,64.5
+Chennai - Anna Nagar,2025-06,273.3,350.0,78.1,70.3
+Chennai - Anna Nagar,2025-07,349.4,378.0,92.4,78.2
+Chennai - Anna Nagar,2025-08,388.0,364.0,106.6,92.4
+Chennai - Anna Nagar,2025-09,277.4,364.0,76.2,91.7
+Chennai - Anna Nagar,2025-10,310.7,378.0,82.2,88.3
+Chennai - Anna Nagar,2025-11,344.2,350.0,98.4,85.6
+Chennai - Anna Nagar,2025-12,299.6,378.0,79.3,86.6
+Chennai - Anna Nagar,2026-01,402.2,378.0,106.4,94.7
+Chennai - Anna Nagar,2026-02,326.8,336.0,97.3,94.3
+Chennai - Anna Nagar,2026-03,373.1,364.0,102.5,102.1
+Chennai - Anna Nagar,2026-04,412.2,364.0,113.2,104.3
+Chennai - Anna Nagar,2026-05,448.4,364.0,123.2,113.0
+Chennai - Anna Nagar,2026-06,437.0,364.0,120.1,118.8
+Chennai - Anna Nagar,2026-07,498.9,378.0,132.0,125.1
+Chennai - Anna Nagar,2026-08,563.5,364.0,154.8,135.6
+Chennai - Anna Nagar,2026-09,420.2,364.0,115.4,134.1
+Delhi - Saket,2025-01,162.7,378.0,43.0,43.0
+Delhi - Saket,2025-02,147.4,336.0,43.9,43.5
+Delhi - Saket,2025-03,261.3,364.0,71.8,52.9
+Delhi - Saket,2025-04,226.6,364.0,62.3,59.3
+Delhi - Saket,2025-05,269.0,378.0,71.2,68.4
+Delhi - Saket,2025-06,269.0,350.0,76.8,70.1
+Delhi - Saket,2025-07,296.3,378.0,78.4,75.5
+Delhi - Saket,2025-08,242.4,364.0,66.6,73.9
+Delhi - Saket,2025-09,320.6,364.0,88.1,77.7
+Delhi - Saket,2025-10,301.1,378.0,79.7,78.1
+Delhi - Saket,2025-11,239.2,350.0,68.3,78.7
+Delhi - Saket,2025-12,277.0,378.0,73.3,73.8
+Delhi - Saket,2026-01,296.8,378.0,78.5,73.4
+Delhi - Saket,2026-02,255.9,336.0,76.2,76.0
+Delhi - Saket,2026-03,360.3,364.0,99.0,84.5
+Delhi - Saket,2026-04,355.6,364.0,97.7,90.9
+Delhi - Saket,2026-05,344.4,364.0,94.6,97.1
+Delhi - Saket,2026-06,445.2,364.0,122.3,104.9
+Delhi - Saket,2026-07,440.5,378.0,116.5,111.1
+Delhi - Saket,2026-08,365.6,364.0,100.4,113.1
+Delhi - Saket,2026-09,461.9,364.0,126.9,114.6
+Hyderabad - Gachibowli,2025-01,113.2,378.0,29.9,29.9
+Hyderabad - Gachibowli,2025-02,129.3,336.0,38.5,34.2
+Hyderabad - Gachibowli,2025-03,149.0,364.0,40.9,36.5
+Hyderabad - Gachibowli,2025-04,171.1,364.0,47.0,42.1
+Hyderabad - Gachibowli,2025-05,198.6,378.0,52.5,46.8
+Hyderabad - Gachibowli,2025-06,210.7,350.0,60.2,53.2
+Hyderabad - Gachibowli,2025-07,204.3,378.0,54.0,55.6
+Hyderabad - Gachibowli,2025-08,218.8,364.0,60.1,58.1
+Hyderabad - Gachibowli,2025-09,230.6,364.0,63.4,59.2
+Hyderabad - Gachibowli,2025-10,213.7,378.0,56.5,60.0
+Hyderabad - Gachibowli,2025-11,248.1,350.0,70.9,63.6
+Hyderabad - Gachibowli,2025-12,195.4,378.0,51.7,59.7
+Hyderabad - Gachibowli,2026-01,260.8,378.0,69.0,63.9
+Hyderabad - Gachibowli,2026-02,176.7,336.0,52.6,57.8
+Hyderabad - Gachibowli,2026-03,240.7,364.0,66.1,62.6
+Hyderabad - Gachibowli,2026-04,250.8,364.0,68.9,62.5
+Hyderabad - Gachibowli,2026-05,314.0,364.0,86.3,73.8
+Hyderabad - Gachibowli,2026-06,252.8,364.0,69.5,74.9
+Hyderabad - Gachibowli,2026-07,305.4,378.0,80.8,78.8
+Hyderabad - Gachibowli,2026-08,383.1,364.0,105.2,85.2
+Hyderabad - Gachibowli,2026-09,291.5,364.0,80.1,88.7
+Kolkata - Salt Lake,2025-01,114.1,378.0,30.2,30.2
+Kolkata - Salt Lake,2025-02,122.9,336.0,36.6,33.4
+Kolkata - Salt Lake,2025-03,158.4,364.0,43.5,36.8
+Kolkata - Salt Lake,2025-04,133.8,364.0,36.8,38.9
+Kolkata - Salt Lake,2025-05,148.8,378.0,39.4,39.9
+Kolkata - Salt Lake,2025-06,194.7,350.0,55.6,43.9
+Kolkata - Salt Lake,2025-07,167.6,378.0,44.3,46.5
+Kolkata - Salt Lake,2025-08,231.2,364.0,63.5,54.5
+Kolkata - Salt Lake,2025-09,199.5,364.0,54.8,54.2
+Kolkata - Salt Lake,2025-10,206.4,378.0,54.6,57.6
+Kolkata - Salt Lake,2025-11,201.1,350.0,57.5,55.6
+Kolkata - Salt Lake,2025-12,167.3,378.0,44.2,52.1
+Kolkata - Salt Lake,2026-01,173.1,378.0,45.8,49.2
+Kolkata - Salt Lake,2026-02,224.2,336.0,66.7,52.2
+Kolkata - Salt Lake,2026-03,209.0,364.0,57.4,56.6
+Kolkata - Salt Lake,2026-04,198.4,364.0,54.5,59.5
+Kolkata - Salt Lake,2026-05,234.5,364.0,64.4,58.8
+Kolkata - Salt Lake,2026-06,270.3,364.0,74.3,64.4
+Kolkata - Salt Lake,2026-07,317.6,378.0,84.0,74.2
+Kolkata - Salt Lake,2026-08,304.5,364.0,83.6,80.6
+Kolkata - Salt Lake,2026-09,270.0,364.0,74.2,80.6
+Mumbai - Andheri,2025-01,229.9,378.0,60.8,60.8
+Mumbai - Andheri,2025-02,250.8,336.0,74.6,67.7
+Mumbai - Andheri,2025-03,271.3,364.0,74.5,70.0
+Mumbai - Andheri,2025-04,268.5,364.0,73.8,74.3
+Mumbai - Andheri,2025-05,256.0,378.0,67.7,72.0
+Mumbai - Andheri,2025-06,342.9,350.0,98.0,79.8
+Mumbai - Andheri,2025-07,371.2,378.0,98.2,88.0
+Mumbai - Andheri,2025-08,342.2,364.0,94.0,96.7
+Mumbai - Andheri,2025-09,343.5,364.0,94.4,95.5
+Mumbai - Andheri,2025-10,356.7,378.0,94.4,94.2
+Mumbai - Andheri,2025-11,366.3,350.0,104.7,97.8
+Mumbai - Andheri,2025-12,335.6,378.0,88.8,95.9
+Mumbai - Andheri,2026-01,426.2,378.0,112.8,102.1
+Mumbai - Andheri,2026-02,336.5,336.0,100.1,100.6
+Mumbai - Andheri,2026-03,412.1,364.0,113.2,108.7
+Mumbai - Andheri,2026-04,386.7,364.0,106.2,106.5
+Mumbai - Andheri,2026-05,468.4,364.0,128.7,116.0
+Mumbai - Andheri,2026-06,475.0,364.0,130.5,121.8
+Mumbai - Andheri,2026-07,607.2,378.0,160.6,139.9
+Mumbai - Andheri,2026-08,521.3,364.0,143.2,144.8
+Mumbai - Andheri,2026-09,447.4,364.0,122.9,142.2
+Pune - Baner,2025-01,116.2,378.0,30.7,30.7
+Pune - Baner,2025-02,85.7,336.0,25.5,28.1
+Pune - Baner,2025-03,160.9,364.0,44.2,33.5
+Pune - Baner,2025-04,125.1,364.0,34.4,34.7
+Pune - Baner,2025-05,123.6,378.0,32.7,37.1
+Pune - Baner,2025-06,152.7,350.0,43.6,36.9
+Pune - Baner,2025-07,194.3,378.0,51.4,42.6
+Pune - Baner,2025-08,197.4,364.0,54.2,49.8
+Pune - Baner,2025-09,170.7,364.0,46.9,50.8
+Pune - Baner,2025-10,221.7,378.0,58.7,53.3
+Pune - Baner,2025-11,178.7,350.0,51.0,52.2
+Pune - Baner,2025-12,163.2,378.0,43.2,51.0
+Pune - Baner,2026-01,209.4,378.0,55.4,49.9
+Pune - Baner,2026-02,196.9,336.0,58.6,52.4
+Pune - Baner,2026-03,194.3,364.0,53.4,55.8
+Pune - Baner,2026-04,221.4,364.0,60.8,57.6
+Pune - Baner,2026-05,214.6,364.0,58.9,57.7
+Pune - Baner,2026-06,294.0,364.0,80.8,66.8
+Pune - Baner,2026-07,291.8,378.0,77.2,72.3
+Pune - Baner,2026-08,270.0,364.0,74.2,77.4
+Pune - Baner,2026-09,248.5,364.0,68.3,73.2

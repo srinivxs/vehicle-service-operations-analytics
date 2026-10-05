@@ -1,0 +1,46 @@
+rule_id,table,column,issue,action,rows_affected
+DQ01,customers,*,Exact duplicate rows,Removed,13
+DQ03,customers,region,Case/whitespace variants,Standardised to canonical region,33
+DQ02,customers,customer_id,Duplicate primary key with conflicting values,Kept first occurrence,0
+DQ01,vehicles,*,Exact duplicate rows,Removed,0
+DQ03,vehicles,model,Model name variants,Mapped to canonical model name,26
+DQ15,vehicles,model_year,Model year before model launch or after purchase,Imputed from purchase_date year,21
+DQ16,vehicles,mileage_km,Negative or > 250 km/day since purchase,Set to null (excluded from mileage analysis),15
+DQ02,vehicles,vehicle_id,Duplicate primary key with conflicting values,Kept first occurrence,0
+DQ01,appointments,*,Exact duplicate rows,Removed,160
+DQ20,appointments,status,Status spelling/case variants,Mapped to Completed/Cancelled/No-Show,107
+DQ04,appointments,scheduled_date,DD/MM/YYYY format mixed with ISO,Parsed to ISO date,214
+DQ05,appointments,scheduled_date,Unparseable or outside reporting period,Removed,0
+DQ05,appointments,booking_date,Booking after scheduled date,Capped at scheduled date,0
+DQ06,appointments,vehicle_id,Vehicle not in vehicle master (orphan FK),Removed with dependent rows,26
+DQ07,appointments,center_id,Missing service centre,Imputed from assigned technician's centre,40
+DQ07,appointments,center_id,Missing service centre with no technician to infer from,Removed,0
+DQ02,appointments,appointment_id,Duplicate primary key with conflicting values,Kept first occurrence,0
+DQ01,work_orders,*,Exact duplicate rows,Removed,96
+DQ03,work_orders,service_type,Case/whitespace variants,Standardised to canonical service type,120
+DQ18,work_orders,appointment_id,Parent appointment removed or missing,Removed (cascade),25
+DQ08,work_orders,start_time/end_time,End time earlier than start time,Treated as transposed entry and swapped,60
+DQ09,work_orders,start_time,Missing start time,Retained; wait_hours null and excluded from wait KPIs,23
+DQ10,work_orders,technician_id,Technician missing or not in technician master,"Set to null; kept for financial KPIs, excluded from technician KPIs",72
+DQ02,work_orders,work_order_id,Duplicate primary key with conflicting values,Kept first occurrence,0
+DQ01,part_usage,*,Exact duplicate rows,Removed,0
+DQ17,part_usage,quantity,Zero or negative quantity,Removed,92
+DQ17,part_usage,part_id,Part not in parts master,Removed,23
+DQ18,part_usage,work_order_id,Parent work order removed,Removed (cascade),50
+DQ02,part_usage,usage_id,Duplicate primary key with conflicting values,Kept first occurrence,0
+DQ01,financials,*,Exact duplicate rows,Removed,72
+DQ18,financials,work_order_id,Parent work order removed,Removed (cascade),25
+DQ11,financials,estimated_cost,Negative amount,Sign-entry error: converted to absolute value,0
+DQ11,financials,labor_cost,Negative amount,Sign-entry error: converted to absolute value,24
+DQ11,financials,parts_cost,Negative amount,Sign-entry error: converted to absolute value,0
+DQ11,financials,revenue,Negative amount,Sign-entry error: converted to absolute value,24
+DQ12,financials,parts_cost,Missing parts cost,Recomputed from part_usage x unit_cost,36
+DQ13,financials,revenue,"Revenue > 10x job cost and > INR 50,000",Decimal-place entry error: divided by 100,24
+DQ19,financials,parts_cost,Parts cost differs from sum of part_usage lines,Reported only; financials kept as billing system of record,114
+DQ02,financials,work_order_id,Duplicate primary key with conflicting values,Kept first occurrence,0
+DQ01,feedback,*,Exact duplicate rows,Removed,36
+DQ14,feedback,rating,Missing rating,Removed,24
+DQ14,feedback,rating,Rating outside 1-5 scale,Removed,49
+DQ18,feedback,work_order_id,Parent work order removed,Removed (cascade),8
+DQ02,feedback,feedback_id,Duplicate primary key with conflicting values,Kept first occurrence,0
+DQ02,feedback,work_order_id,More than one feedback per work order,Kept first,0

@@ -1,0 +1,7 @@
+weekday,open_days,work_orders,avg_jobs_per_day,avg_wait_hours,load_rank,wait_rank,corr_load_vs_wait_across_weekdays
+Monday,91,3957.0,43.5,0.57,2,3,0.981
+Tuesday,91,3558.0,39.1,0.5,4,5,0.981
+Wednesday,92,3474.0,37.8,0.55,6,4,0.981
+Thursday,91,3543.0,38.9,0.45,5,6,0.981
+Friday,91,3843.0,42.2,0.65,3,2,0.981
+Saturday,91,5717.0,62.8,2.65,1,1,0.981

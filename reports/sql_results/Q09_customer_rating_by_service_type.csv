@@ -1,0 +1,12 @@
+service_type,work_orders,rated_jobs,rating_coverage_pct,avg_rating,csat_pct,low_rating_pct,rating_rank
+Software Update Support,925,484,52.3,4.219,83.7,3.9,1
+Battery Health Check,1662,863,51.9,4.107,77.4,3.7,2
+Periodic Service,14205,6978,49.1,4.073,77.4,3.9,3
+Tyre Replacement,1395,685,49.1,4.015,74.9,4.2,4
+Brake Service,1638,871,53.2,3.982,72.8,4.4,5
+Belt Drive Service,933,483,51.8,3.93,70.4,7.7,6
+Suspension Service,562,314,55.9,3.882,67.2,5.7,7
+Electrical Diagnostics,1118,589,52.7,3.834,63.5,6.8,8
+Charging System Repair,668,358,53.6,3.785,63.1,10.1,9
+Motor & Controller Repair,401,236,58.9,3.657,59.3,11.4,10
+Accident & Body Repair,585,325,55.6,3.612,53.8,9.8,11

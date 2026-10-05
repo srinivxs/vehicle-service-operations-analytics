@@ -1,0 +1,19 @@
+technician_id,center_id,skill_level,years_experience,certification,hourly_cost,shift_hours_per_day
+T001,C001,Senior,5,EV Level 3,360.0,8
+T002,C001,Junior,2,EV Level 1,210.0,8
+T003,C001,Mid,2,EV Level 2,280.0,8
+T004,C002,Senior,9,EV Level 3,360.0,8
+T005,C002,Junior,0,EV Level 1,210.0,8
+T006,C002,Senior,5,EV Level 3,360.0,8
+T007,C003,Mid,2,EV Level 2,280.0,8
+T008,C003,Senior,6,EV Level 3,360.0,8
+T009,C004,Mid,3,EV Level 2,280.0,8
+T010,C004,Senior,8,EV Level 3,360.0,8
+T011,C005,Senior,5,EV Level 3,360.0,8
+T012,C005,Master,15,EV Level 4,450.0,8
+T013,C006,Junior,0,EV Level 1,210.0,8
+T014,C006,Mid,2,EV Level 2,280.0,8
+T015,C007,Master,13,EV Level 4,450.0,8
+T016,C007,Junior,1,EV Level 1,210.0,8
+T017,C008,Senior,7,EV Level 3,360.0,8
+T018,C008,Senior,5,EV Level 3,360.0,8

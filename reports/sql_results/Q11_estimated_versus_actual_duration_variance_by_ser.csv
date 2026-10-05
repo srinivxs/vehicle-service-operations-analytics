@@ -1,0 +1,12 @@
+service_type,work_orders,avg_estimated_hours,avg_actual_hours,avg_variance_hours,avg_variance_pct_of_estimate,jobs_over_estimate_by_25pct_pct,estimate_quality
+Accident & Body Repair,585,5.29,5.94,0.647,12.3,27.0,Under-estimated
+Suspension Service,562,2.63,3.1,0.467,18.0,32.7,Slightly under-estimated
+Motor & Controller Repair,401,4.07,4.52,0.451,11.3,24.7,Slightly under-estimated
+Belt Drive Service,933,2.08,2.46,0.384,18.4,32.5,Slightly under-estimated
+Charging System Repair,668,2.6,2.95,0.35,13.5,27.8,Slightly under-estimated
+Brake Service,1638,1.81,2.15,0.337,18.7,34.1,Slightly under-estimated
+Electrical Diagnostics,1118,2.09,2.4,0.311,14.9,29.6,Slightly under-estimated
+Periodic Service,14205,1.8,2.1,0.307,17.3,31.7,Slightly under-estimated
+Tyre Replacement,1395,1.26,1.5,0.236,19.0,31.4,Slightly under-estimated
+Battery Health Check,1662,0.99,1.19,0.198,20.1,31.5,Accurate
+Software Update Support,925,0.74,0.89,0.154,21.0,31.0,Accurate

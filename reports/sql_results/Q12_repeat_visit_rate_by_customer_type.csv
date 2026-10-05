@@ -1,0 +1,5 @@
+customer_type,customers_served,repeat_customers,repeat_visit_rate_pct,avg_visits_per_customer,avg_revenue_per_customer,comeback_visits_pct_of_visits
+Corporate,85,85,100.0,16.52,52459.76,3.13
+Fleet,138,138,100.0,84.3,248458.4,4.78
+Individual,2890,2444,84.57,3.83,13665.16,4.39
+ALL CUSTOMERS,3113,2667,85.67,7.74,25132.88,4.5

@@ -1,0 +1,11 @@
+part_category,work_orders_using,units_used,parts_spend,spend_per_work_order,share_of_spend_pct,cumulative_share_pct,spend_rank
+Battery & Electrical,1482,1824,8372350.0,5649.36,19.4,19.4,1
+Brakes,9913,14700,6611650.0,666.97,15.32,34.73,2
+Consumables,13905,23697,4890650.0,351.72,11.34,46.06,3
+Motor & Controller,313,532,4676300.0,14940.26,10.84,56.9,4
+Tyres,1374,3644,3993480.0,2906.46,9.26,66.16,5
+Body & Lighting,528,1193,3249500.0,6154.36,7.53,73.69,6
+Charging,518,823,3178600.0,6136.29,7.37,81.06,7
+Drivetrain,839,1139,3116200.0,3714.18,7.22,88.28,8
+Dashboard & Display,437,484,2603200.0,5956.98,6.03,94.31,9
+Suspension,574,1036,2454050.0,4275.35,5.69,100.0,10

@@ -1,0 +1,9 @@
+center_id,center_name,city,state,region,service_bays,daily_job_capacity,opened_date
+C001,Bengaluru - Indiranagar,Bengaluru,Karnataka,South,8,22,2019-06-01
+C002,Bengaluru - Whitefield,Bengaluru,Karnataka,South,7,18,2020-02-15
+C003,Chennai - Anna Nagar,Chennai,Tamil Nadu,South,6,16,2020-09-01
+C004,Hyderabad - Gachibowli,Hyderabad,Telangana,South,6,15,2021-03-10
+C005,Pune - Baner,Pune,Maharashtra,West,6,15,2021-07-01
+C006,Mumbai - Andheri,Mumbai,Maharashtra,West,5,12,2021-11-15
+C007,Delhi - Saket,New Delhi,Delhi,North,6,15,2021-05-01
+C008,Kolkata - Salt Lake,Kolkata,West Bengal,East,4,10,2022-09-01
