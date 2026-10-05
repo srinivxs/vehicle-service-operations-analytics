@@ -20,3 +20,4 @@ Thumbs.db
 # Power BI cache/temp
 powerbi/*.pbix.bak
 powerbi/**/.pbi/cache.abf
+powerbi/**/.pbi/localSettings.json

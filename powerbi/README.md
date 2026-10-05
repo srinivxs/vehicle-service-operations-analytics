@@ -1,14 +1,40 @@
-# Power BI build kit
+# Power BI report
 
-Build guide for `vehicle_service_dashboard.pbix`: a 4-page report that mirrors the runnable Streamlit dashboard in `app/` (same KPI definitions, same slicers, same palette). Power BI Desktop was not available when this kit was written, so the `.pbix` itself is not checked in; everything needed to build it in about an hour is here.
+A 4-page Power BI report (Executive Overview, Operations, Financial Analysis, Customer Experience) that mirrors
+the Streamlit dashboard in `app/`: same KPI definitions, same slicers, same palette.
 
-Synthetic data for an EV two-wheeler service network modelled on Ather-style models (Ather 450X, 450 Apex, Rizta); 8 Indian service centres, Jan 2025 - Sep 2026, INR. Not affiliated with Ather Energy.
+Synthetic data for an EV two-wheeler service network modelled on Ather-style models (Ather 450X, 450 Apex, Rizta);
+8 Indian service centres, Jan 2025 - Sep 2026, INR. Not affiliated with Ather Energy.
 
 | File | Purpose |
 |---|---|
-| `README.md` | This guide: data load, model, page layouts, slicer sync, acceptance tests |
-| `dax_measures.md` / `dax_measures.dax` | All measures and calculated columns (65 measures, display folders, format strings) |
+| `vehicle_service_dashboard.pbix` | **The report, ready to open** in Power BI Desktop (data embedded) |
+| `VehicleServiceDashboard.pbip` + `.SemanticModel/` + `.Report/` | The same report as a Power BI Project: text files (TMDL model, PBIR pages) that diff cleanly in Git |
+| `generate_pbip.py` | Generates the Power BI Project from `dax_measures.dax` and the layout spec below (`python powerbi/generate_pbip.py`) |
+| `dax_measures.md` / `dax_measures.dax` | All 65 measures with display folders and format strings |
 | `vehicle_service_theme.json` | Report theme (palette, fonts, visual defaults) matching the Streamlit app |
+
+## Quick start
+
+* **Just view it:** open `vehicle_service_dashboard.pbix` in Power BI Desktop (free).
+* **Refresh with new data:** run the pipeline (`python -m src.pipeline`), open the `.pbix` and click **Home > Refresh**.
+  If the repository lives somewhere other than `C:\Vehicle_Service_Operations_Analytics`, first change the
+  `DataFolder` parameter (Home > Transform data > Edit parameters) to your `data\cleaned\` folder.
+* **Change the report as code:** edit `generate_pbip.py` or `dax_measures.dax`, run `python powerbi/generate_pbip.py`,
+  open `VehicleServiceDashboard.pbip`, click **Refresh**, then **File > Save As > Power BI file (*.pbix)**.
+
+## Verification
+
+The generated report was opened in Power BI Desktop 2.158 and checked in two ways:
+
+* Every page was rendered and inspected; all 104 visuals load with no errors.
+* DAX queries were run against the report's in-memory model and compared with `src/kpis.py`: all 25 full-range KPIs
+  and all centre + date-range KPIs in section 8 (Pune - Baner, Jun-Dec 2025) match exactly, and conflicting filters
+  (Region = North with Service centre = Pune - Baner) return empty results rather than errors.
+
+The 72 work orders with no recorded technician appear as an explicit **Unassigned** technician and skill level
+instead of a blank member. Sections 1-7 below document how the model and pages are built, for anyone rebuilding the
+report by hand.
 
 ---
 
@@ -274,7 +300,7 @@ Run these after building (mirrors the project acceptance criterion: selecting a 
 **D. Behavioural checks**
 - [ ] Rating averages ignore blank ratings (about half of work orders are unrated); CSAT % uses only rated work orders.
 - [ ] `Total Cost` = labour + parts everywhere; profit by centre sums to total profit.
-- [ ] Parts cost by part category sums to `Parts Cost` (43,269,120 on the full range).
+- [ ] Parts cost by part category (`Parts Cost (Catalogue)`, from part lines) totals 43,145,980 on the full range, versus the billed `Parts Cost` KPI of 43,269,120. The 123,140 gap is expected: cleaning rule DQ17 removed 115 invalid part lines whose cost stays in the billed financials (reported as DQ19 in `reports/cleaning_log.csv`).
 - [ ] Month axis sorts chronologically (Jan 25 ... Sep 26), weekday axis Monday to Saturday.
 - [ ] Footer disclaimer visible on every page; no personal data fields are used.
 

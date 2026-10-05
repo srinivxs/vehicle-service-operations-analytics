@@ -1,0 +1,56 @@
+relationship 257f1e12-1085-5994-b601-dfd35dff714e
+	fromColumn: fact_service.service_date
+	toColumn: DimDate.date
+
+relationship 3e88ab1f-8dbe-5812-baea-78fa32f5dd60
+	fromColumn: fact_appointments.scheduled_date
+	toColumn: DimDate.date
+
+relationship a0a5c279-1a3f-5907-be1e-aee80f1f572b
+	toCardinality: many
+	fromColumn: fact_technician_month.month_start
+	toColumn: DimDate.month_start
+
+relationship 68facaf3-c393-5f76-908a-9c3616987b38
+	fromColumn: fact_service.center_id
+	toColumn: DimCentre.center_id
+
+relationship 6176da19-95ea-5140-825e-ffd82ead6ce0
+	fromColumn: fact_appointments.center_id
+	toColumn: DimCentre.center_id
+
+relationship 5acc0679-ae63-56f2-8c7d-ecb0dede60fc
+	fromColumn: fact_technician_month.center_id
+	toColumn: DimCentre.center_id
+
+relationship 0be63bb2-e4ff-5937-ad72-dc8e9772fad8
+	fromColumn: fact_service.technician_id
+	toColumn: DimTechnician.technician_id
+
+relationship 6017267f-be80-525b-8195-1b12c1610a18
+	fromColumn: fact_technician_month.technician_id
+	toColumn: DimTechnician.technician_id
+
+relationship aa461903-b903-5dc1-948a-7ff66cb476bf
+	fromColumn: fact_service.service_type
+	toColumn: DimServiceType.service_type
+
+relationship abc36cf4-6d5b-5042-bbc0-b80b7976e191
+	fromColumn: fact_appointments.requested_service_type
+	toColumn: DimServiceType.service_type
+
+relationship 1962dba0-85a7-52da-b9c0-eccbe807b73c
+	fromColumn: fact_service.model
+	toColumn: DimModel.model
+
+relationship a345c581-72e0-5c50-bd0d-0e6947caf1ae
+	fromColumn: fact_appointments.model
+	toColumn: DimModel.model
+
+relationship 84e4c1c0-c30e-50b4-836e-b3b484f76518
+	fromColumn: part_usage.work_order_id
+	toColumn: fact_service.work_order_id
+
+relationship faad941d-70df-5807-9f86-5841ef99a933
+	fromColumn: part_usage.part_id
+	toColumn: parts.part_id

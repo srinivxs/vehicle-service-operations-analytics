@@ -1,0 +1,457 @@
+table '_Measures'
+	lineageTag: 4491e3d9-f222-571a-b7d3-4c30698a48de
+
+	measure 'Total Revenue' = SUM ( fact_service[revenue] )
+		formatString: #,0
+		displayFolder: 1 Financial
+		lineageTag: a3d853d6-0784-57ef-9705-dc0cedd1193f
+
+	measure 'Labour Cost' = SUM ( fact_service[labor_cost] )
+		formatString: #,0
+		displayFolder: 1 Financial
+		lineageTag: 48def844-0786-5624-bc51-8daa75b867b8
+
+	measure 'Parts Cost' = SUM ( fact_service[parts_cost] )
+		formatString: #,0
+		displayFolder: 1 Financial
+		lineageTag: 928f4754-031f-5c4a-8ae0-142862caed30
+
+	measure 'Total Cost' = [Labour Cost] + [Parts Cost]
+		formatString: #,0
+		displayFolder: 1 Financial
+		lineageTag: 96a0bffb-15d3-5475-9178-1295d2c43e38
+
+	measure 'Profit' = [Total Revenue] - [Total Cost]
+		formatString: #,0
+		displayFolder: 1 Financial
+		lineageTag: 77665900-ca3d-5033-8e40-6fc424215e81
+
+	measure 'Profit Margin %' = DIVIDE ( [Profit], [Total Revenue] )
+		formatString: 0.0%
+		displayFolder: 1 Financial
+		lineageTag: 6f3a94dd-6eb7-5699-a4b6-aad7b816afe1
+
+	measure 'Avg Service Cost' = DIVIDE ( [Total Cost], [Completed Services] )
+		formatString: #,0
+		displayFolder: 1 Financial
+		lineageTag: a4211618-f6a2-5018-8946-d506989c771c
+
+	measure 'Parts Share of Cost %' = DIVIDE ( [Parts Cost], [Total Cost] )
+		formatString: 0.0%
+		displayFolder: 1 Financial
+		lineageTag: 3e1fa553-d19d-5b05-919f-c81370c995a2
+
+	measure 'Total Estimated Cost' = SUM ( fact_service[estimated_cost] )
+		formatString: #,0
+		displayFolder: 1 Financial
+		lineageTag: 0fb1c962-886e-5457-b662-5adaf94f6958
+
+	measure 'Cost Variance' = SUM ( fact_service[cost_variance] )
+		formatString: #,0
+		displayFolder: 1 Financial
+		lineageTag: 6e8834e5-b09c-5faf-843b-5fd266fead7b
+
+	measure 'Cost Variance %' = DIVIDE ( [Cost Variance], [Total Estimated Cost] )
+		formatString: 0.0%
+		displayFolder: 1 Financial
+		lineageTag: 0a7f3779-8681-527f-9a80-6511acbb0251
+
+	measure 'Cost Overrun Rate' =
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( fact_service ), fact_service[cost_overrun_flag] = TRUE () ),
+			    [Completed Services]
+			)
+		formatString: 0.0%
+		displayFolder: 1 Financial
+		lineageTag: ebaa9187-c700-5456-b37c-3ca69037c4d7
+
+	measure 'Parts Cost (Catalogue)' = SUMX ( part_usage, part_usage[quantity] * RELATED ( parts[unit_cost] ) )
+		formatString: #,0
+		displayFolder: 1 Financial
+		lineageTag: 4cfe33e9-827e-5666-b907-0b3779db29a1
+
+	measure 'Completed Services' = COUNTROWS ( fact_service )
+		formatString: #,0
+		displayFolder: 2 Operations
+		lineageTag: 815244bd-823b-575c-be64-94f098805362
+
+	measure 'On-Time %' =
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( fact_service ), fact_service[on_time_flag] = TRUE () ),
+			    [Completed Services]
+			)
+		formatString: 0.0%
+		displayFolder: 2 Operations
+		lineageTag: e55d41b5-ae02-57f2-8bcf-471f70e501fb
+
+	measure 'Avg Turnaround Hours' = AVERAGE ( fact_service[turnaround_hours] )
+		formatString: 0.0
+		displayFolder: 2 Operations
+		lineageTag: d83ebf5f-e400-5b85-8a9a-40485cce1435
+
+	measure 'Median Turnaround Hours' = MEDIAN ( fact_service[turnaround_hours] )
+		formatString: 0.0
+		displayFolder: 2 Operations
+		lineageTag: 7d1af665-4a35-545f-88d6-44984665f889
+
+	measure 'Avg Wait Hours' = AVERAGE ( fact_service[wait_hours] )
+		formatString: 0.0
+		displayFolder: 2 Operations
+		lineageTag: 9ae9b6bc-aa30-5f7a-8747-14a854740f76
+
+	measure 'Avg Estimated Hours' = AVERAGE ( fact_service[estimated_hours] )
+		formatString: 0.00
+		displayFolder: 2 Operations
+		lineageTag: a925aa5d-73db-5285-ad52-467e540ecd81
+
+	measure 'Avg Actual Hours' = AVERAGE ( fact_service[actual_hours] )
+		formatString: 0.00
+		displayFolder: 2 Operations
+		lineageTag: d481d0f2-b9e8-544c-bbda-9ca5c8a5e008
+
+	measure 'Avg Duration Variance Hours' = AVERAGE ( fact_service[duration_variance_hours] )
+		formatString: 0.00
+		displayFolder: 2 Operations
+		lineageTag: 600e4232-28b1-598e-8074-467e2084eb04
+
+	measure 'Parts Delay Rate' =
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( fact_service ), fact_service[parts_delay_flag] = TRUE () ),
+			    [Completed Services]
+			)
+		formatString: 0.0%
+		displayFolder: 2 Operations
+		lineageTag: 89a42f34-5a8d-588b-8b80-1da74b6e619a
+
+	measure 'QC First-Pass %' =
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( fact_service ), fact_service[qc_passed_first_time] = TRUE () ),
+			    [Completed Services]
+			)
+		formatString: 0.0%
+		displayFolder: 2 Operations
+		lineageTag: 9c68ab04-a30e-5404-ada3-d8af8d7eabb7
+
+	measure 'Comeback Rate' =
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( fact_service ), fact_service[caused_repeat_visit] = TRUE () ),
+			    [Completed Services]
+			)
+		formatString: 0.0%
+		displayFolder: 2 Operations
+		lineageTag: 02cd8e1a-069f-5530-be35-68cd5aa3c36b
+
+	measure 'Service Hours' = SUM ( fact_technician_month[service_hours] )
+		formatString: #,0
+		displayFolder: 2 Operations
+		lineageTag: 47db66cf-b39a-5b11-84ef-5111a6c3bcfc
+
+	measure 'Available Hours' = SUM ( fact_technician_month[available_hours] )
+		formatString: #,0
+		displayFolder: 2 Operations
+		lineageTag: a7556a7a-6b96-5058-a92c-5b8d9e3c8c60
+
+	measure 'Technician Utilisation %' = DIVIDE ( [Service Hours], [Available Hours] )
+		formatString: 0.0%
+		displayFolder: 2 Operations
+		lineageTag: 4c0aede2-ae95-5df7-b9a2-12ff1cc0d844
+
+	measure 'Avg Rating' = AVERAGE ( fact_service[rating] )
+		formatString: 0.00
+		displayFolder: 3 Customer
+		lineageTag: 8f924415-0ae0-55cd-8583-b80a0bc0aa96
+
+	measure 'Rated Services' = COUNT ( fact_service[rating] )
+		formatString: #,0
+		displayFolder: 3 Customer
+		lineageTag: b2d2ea33-6a1b-5dd7-9975-1d7ba65b8e16
+
+	measure 'CSAT %' =
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( fact_service ), fact_service[rating] >= 4 ),
+			    [Rated Services]
+			)
+		formatString: 0.0%
+		displayFolder: 3 Customer
+		lineageTag: a0902a65-d4ed-5cae-8276-6efa42e00b6e
+
+	measure 'Appointments' = COUNTROWS ( fact_appointments )
+		formatString: #,0
+		displayFolder: 3 Customer
+		lineageTag: 5d1671e5-8870-5ee7-91f6-92bec04d88b9
+
+	measure 'Cancelled Appointments' = CALCULATE ( COUNTROWS ( fact_appointments ), fact_appointments[status] = "Cancelled" )
+		formatString: #,0
+		displayFolder: 3 Customer
+		lineageTag: 84a03035-bf3b-5c58-9f0e-5f0591439641
+
+	measure 'No-Show Appointments' = CALCULATE ( COUNTROWS ( fact_appointments ), fact_appointments[status] = "No-Show" )
+		formatString: #,0
+		displayFolder: 3 Customer
+		lineageTag: 7c4aaee8-3b31-5170-b41a-3ad71d86151d
+
+	measure 'Cancellation Rate' = DIVIDE ( [Cancelled Appointments], [Appointments] )
+		formatString: 0.0%
+		displayFolder: 3 Customer
+		lineageTag: 8ea0dc6c-0e52-58fa-af3b-d0a3cbbf9298
+
+	measure 'No-Show Rate' = DIVIDE ( [No-Show Appointments], [Appointments] )
+		formatString: 0.0%
+		displayFolder: 3 Customer
+		lineageTag: c38d2679-e29b-53ab-a030-68eb9ff15e81
+
+	measure 'Customers' = DISTINCTCOUNT ( fact_service[customer_id] )
+		formatString: #,0
+		displayFolder: 3 Customer
+		lineageTag: 0736f9e3-fe88-595e-be88-0d64ce1b4377
+
+	measure 'Repeat Customers' =
+			COUNTROWS (
+			    FILTER (
+			        ADDCOLUMNS ( VALUES ( fact_service[customer_id] ), "@Orders", CALCULATE ( COUNTROWS ( fact_service ) ) ),
+			        [@Orders] >= 2
+			    )
+			)
+		formatString: #,0
+		displayFolder: 3 Customer
+		lineageTag: 11d36da7-51a9-5c60-a1a1-827f003db8d1
+
+	measure 'Repeat Visit Rate' = DIVIDE ( [Repeat Customers], [Customers] )
+		formatString: 0.0%
+		displayFolder: 3 Customer
+		lineageTag: f1c5b171-9ed5-5abe-b69e-2b6fa7edc705
+
+	measure 'Revenue PM' = CALCULATE ( [Total Revenue], DATEADD ( DimDate[date], -1, MONTH ) )
+		formatString: #,0
+		displayFolder: 4 Time Intelligence
+		lineageTag: 31df5d88-7895-5453-8407-188d029a92da
+
+	measure 'Revenue MoM %' = DIVIDE ( [Total Revenue] - [Revenue PM], [Revenue PM] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 4 Time Intelligence
+		lineageTag: 9a40d1ed-ed0d-5967-adec-c0b609cfec79
+
+	measure 'Profit PM' = CALCULATE ( [Profit], DATEADD ( DimDate[date], -1, MONTH ) )
+		formatString: #,0
+		displayFolder: 4 Time Intelligence
+		lineageTag: 251360ef-cf33-54d8-b262-bcf44435f200
+
+	measure 'Profit MoM %' = DIVIDE ( [Profit] - [Profit PM], [Profit PM] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 4 Time Intelligence
+		lineageTag: 7d08e816-44fb-5d6d-8b9f-12704a6178f2
+
+	measure 'Revenue PY' = CALCULATE ( [Total Revenue], SAMEPERIODLASTYEAR ( DimDate[date] ) )
+		formatString: #,0
+		displayFolder: 4 Time Intelligence
+		lineageTag: e84a93e2-f6fa-51c8-b87c-e4ee5cef3f0d
+
+	measure 'Revenue YoY %' = DIVIDE ( [Total Revenue] - [Revenue PY], [Revenue PY] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 4 Time Intelligence
+		lineageTag: c92e63aa-4d9b-5467-93db-b70d9462abb1
+
+	measure 'Profit PY' = CALCULATE ( [Profit], SAMEPERIODLASTYEAR ( DimDate[date] ) )
+		formatString: #,0
+		displayFolder: 4 Time Intelligence
+		lineageTag: 91aa6693-4e9c-5804-8bc2-afecd2d3db1f
+
+	measure 'Profit YoY %' = DIVIDE ( [Profit] - [Profit PY], [Profit PY] )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 4 Time Intelligence
+		lineageTag: 065f2aff-6728-5471-b44e-b690e5f64992
+
+	measure 'Revenue YTD' = TOTALYTD ( [Total Revenue], DimDate[date] )
+		formatString: #,0
+		displayFolder: 4 Time Intelligence
+		lineageTag: 06a98663-c6c1-5e6c-bc26-12a8dbb0f31d
+
+	measure 'INR Short Revenue' =
+			VAR v = [Total Revenue]
+			RETURN
+			    IF (
+			        ISBLANK ( v ), "-",
+			        IF ( ABS ( v ) >= 10000000, FORMAT ( v / 10000000, "\₹0.0" ) & " Cr",
+			        IF ( ABS ( v ) >= 100000, FORMAT ( v / 100000, "\₹0.0" ) & " L", FORMAT ( v, "\₹#,0" ) ) )
+			    )
+		displayFolder: 5 Display
+		lineageTag: 0e93a232-9f48-5fe7-86ff-7f6a6bfa1a56
+
+	measure 'INR Short Cost' =
+			VAR v = [Total Cost]
+			RETURN
+			    IF (
+			        ISBLANK ( v ), "-",
+			        IF ( ABS ( v ) >= 10000000, FORMAT ( v / 10000000, "\₹0.0" ) & " Cr",
+			        IF ( ABS ( v ) >= 100000, FORMAT ( v / 100000, "\₹0.0" ) & " L", FORMAT ( v, "\₹#,0" ) ) )
+			    )
+		displayFolder: 5 Display
+		lineageTag: 2ea97aba-02b2-53d6-a59d-f57b032757ab
+
+	measure 'INR Short Profit' =
+			VAR v = [Profit]
+			RETURN
+			    IF (
+			        ISBLANK ( v ), "-",
+			        IF ( ABS ( v ) >= 10000000, FORMAT ( v / 10000000, "\₹0.0" ) & " Cr",
+			        IF ( ABS ( v ) >= 100000, FORMAT ( v / 100000, "\₹0.0" ) & " L", FORMAT ( v, "\₹#,0" ) ) )
+			    )
+		displayFolder: 5 Display
+		lineageTag: e6f42238-4338-52bc-90cd-24b9f48d97de
+
+	measure 'Centre Performance Index' =
+			VAR Centres = ALLSELECTED ( DimCentre[center_name] )
+			VAR N = COUNTROWS ( Centres )
+			VAR RankOnTime = RANKX ( Centres, [On-Time %], , ASC, Skip )
+			VAR RankRating = RANKX ( Centres, [Avg Rating], , ASC, Skip )
+			VAR RankMargin = RANKX ( Centres, [Profit Margin %], , ASC, Skip )
+			VAR RankTurn = RANKX ( Centres, [Avg Turnaround Hours], , DESC, Skip )
+			VAR RankCancel = RANKX ( Centres, [Cancellation Rate], , DESC, Skip )
+			RETURN
+			    IF (
+			        HASONEVALUE ( DimCentre[center_name] ),
+			        100 * DIVIDE ( RankOnTime + RankRating + RankMargin + RankTurn + RankCancel, 5 * N )
+			    )
+		formatString: 0
+		displayFolder: 6 Ranking
+		lineageTag: dc2e502c-bb2c-57fe-80e6-e1803770cd85
+
+	measure 'Centre Rank' =
+			IF (
+			    HASONEVALUE ( DimCentre[center_name] ),
+			    RANKX ( ALLSELECTED ( DimCentre[center_name] ), [Centre Performance Index], , DESC, Skip )
+			)
+		formatString: 0
+		displayFolder: 6 Ranking
+		lineageTag: 805ab29d-3065-5ac7-a8e7-6d6ac32416af
+
+	measure 'Key Insight - Executive' =
+			VAR T = ADDCOLUMNS ( VALUES ( DimCentre[center_name] ), "@OnTime", [On-Time %] )
+			VAR Worst = TOPN ( 1, FILTER ( T, NOT ISBLANK ( [@OnTime] ) ), [@OnTime], ASC )
+			RETURN
+			    IF (
+			        COUNTROWS ( T ) < 2,
+			        BLANK (),
+			        MAXX ( Worst, DimCentre[center_name] ) & " has the lowest on-time rate at "
+			            & FORMAT ( MINX ( Worst, [@OnTime] ), "0.0%" ) & " (network " & FORMAT ( [On-Time %], "0.0%" ) & ")."
+			    )
+		displayFolder: 6 Ranking
+		lineageTag: 4f3a3524-20d9-59f6-8e6f-a8690c33b1d1
+
+	measure 'Key Insight - Operations' =
+			VAR T = ADDCOLUMNS ( VALUES ( DimCentre[center_name] ), "@Turn", [Avg Turnaround Hours] )
+			VAR Slowest = TOPN ( 1, FILTER ( T, NOT ISBLANK ( [@Turn] ) ), [@Turn], DESC )
+			RETURN
+			    IF (
+			        COUNTROWS ( T ) < 2,
+			        BLANK (),
+			        MAXX ( Slowest, DimCentre[center_name] ) & " is slowest, averaging "
+			            & FORMAT ( MAXX ( Slowest, [@Turn] ), "0.0" ) & " h turnaround."
+			    )
+		displayFolder: 6 Ranking
+		lineageTag: 2acdfd6c-020e-5d61-ad3a-4e1aa85f02ec
+
+	measure 'Key Insight - Financial' =
+			VAR T = ADDCOLUMNS ( VALUES ( DimServiceType[service_type] ), "@Margin", [Profit Margin %] )
+			VAR Best = TOPN ( 1, FILTER ( T, NOT ISBLANK ( [@Margin] ) ), [@Margin], DESC )
+			VAR Worst = TOPN ( 1, FILTER ( T, NOT ISBLANK ( [@Margin] ) ), [@Margin], ASC )
+			RETURN
+			    IF (
+			        COUNTROWS ( T ) < 2,
+			        BLANK (),
+			        MAXX ( Best, DimServiceType[service_type] ) & " earns the best margin (" & FORMAT ( MAXX ( Best, [@Margin] ), "0.0%" )
+			            & ") while " & MAXX ( Worst, DimServiceType[service_type] ) & " earns the lowest ("
+			            & FORMAT ( MAXX ( Worst, [@Margin] ), "0.0%" ) & ")."
+			    )
+		displayFolder: 6 Ranking
+		lineageTag: 8c7e0b71-73e5-5a85-821f-4b579c365a8e
+
+	measure 'Key Insight - Customer' =
+			VAR T = ADDCOLUMNS ( VALUES ( DimCentre[center_name] ), "@Rating", [Avg Rating] )
+			VAR Lowest = TOPN ( 1, FILTER ( T, NOT ISBLANK ( [@Rating] ) ), [@Rating], ASC )
+			RETURN
+			    IF (
+			        COUNTROWS ( T ) < 2,
+			        BLANK (),
+			        MAXX ( Lowest, DimCentre[center_name] ) & " has the lowest average rating ("
+			            & FORMAT ( MINX ( Lowest, [@Rating] ), "0.00" ) & " / 5)."
+			    )
+		displayFolder: 6 Ranking
+		lineageTag: 8dee123e-fe81-52ef-b414-e28ebecebf7b
+
+	measure 'Selection Label' =
+			VAR Centre =
+			    IF ( ISFILTERED ( DimCentre[center_name] ),
+			         IF ( HASONEVALUE ( DimCentre[center_name] ), SELECTEDVALUE ( DimCentre[center_name] ), "Selected centres" ),
+			         "All centres" )
+			VAR Region =
+			    IF ( ISFILTERED ( DimCentre[region] ),
+			         IF ( HASONEVALUE ( DimCentre[region] ), SELECTEDVALUE ( DimCentre[region] ), "Selected regions" ),
+			         "All regions" )
+			VAR D0 = MIN ( DimDate[date] )
+			VAR D1 = MAX ( DimDate[date] )
+			RETURN
+			    Centre & " | " & Region & " | " & FORMAT ( D0, "dd mmm yyyy" ) & " - " & FORMAT ( D1, "dd mmm yyyy" )
+		displayFolder: 7 Titles
+		lineageTag: 59c31b32-eaef-500e-80da-8fc699038f58
+
+	measure 'Title - Revenue and Profit Trend' = "Monthly revenue and profit - " & [Selection Label]
+		displayFolder: 7 Titles
+		lineageTag: 7877c234-2e68-5a69-b31e-0203db078306
+
+	measure 'Title - Turnaround by Centre' = "Turnaround time by centre (hours) - " & [Selection Label]
+		displayFolder: 7 Titles
+		lineageTag: a8ce53c8-d525-5e41-aa63-7fd55af88fe4
+
+	measure 'Title - Profit by Centre' = "Profit by service centre - " & [Selection Label]
+		displayFolder: 7 Titles
+		lineageTag: 66eb216e-03d9-5d35-a5ad-2987c2a0a215
+
+	measure 'Title - Rating Trend' = "Rating trend - " & [Selection Label]
+		displayFolder: 7 Titles
+		lineageTag: e3aaec63-82cf-5e2c-a051-c8cfda0e6099
+
+	measure 'Footer Disclaimer' = "Synthetic data for demonstration. Modelled on an EV two-wheeler service network; not affiliated with Ather Energy. Amounts in INR."
+		displayFolder: 7 Titles
+		lineageTag: de06cd4e-8674-5cf6-ae96-d9054b3f9460
+
+	measure 'Colour - On-Time vs Network' =
+			VAR Network = CALCULATE ( [On-Time %], ALLSELECTED ( DimCentre ) )
+			RETURN IF ( [On-Time %] >= Network, "#00A67E", "#EB6834" )
+		displayFolder: 7 Titles
+		lineageTag: a93fa31f-0e95-5289-b433-d40a44f472b8
+
+	measure 'Colour - Profit Sign' = IF ( [Profit] >= 0, "#00A67E", "#EB6834" )
+		displayFolder: 7 Titles
+		lineageTag: b33e7ebe-785c-5afe-af5c-f175937f46f8
+
+	measure 'Colour - Skill Level' =
+			SWITCH (
+			    SELECTEDVALUE ( DimTechnician[skill_level] ),
+			    "Junior", "#EB6834",
+			    "Mid", "#2A78D6",
+			    "Senior", "#00A67E",
+			    "Master", "#4A3AA7",
+			    "#A9B4B0"
+			)
+		displayFolder: 7 Titles
+		lineageTag: 76f49889-0e28-5993-b779-b2fc47414d82
+
+	column 'Measure Holder'
+		dataType: string
+		isHidden
+		lineageTag: b2879795-129b-5d52-974c-8121ef6f9aa1
+		summarizeBy: none
+		sourceColumn: Measure Holder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '_Measures' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [#"Measure Holder" = text], {})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table

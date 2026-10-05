@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["DataFolder", "fact_service", "fact_appointments", "fact_technician_month", "DimDate", "DimCentre", "DimTechnician", "DimServiceType", "DimModel", "parts", "part_usage", "_Measures"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+ref table 'fact_service'
+ref table 'fact_appointments'
+ref table 'fact_technician_month'
+ref table 'DimDate'
+ref table 'DimCentre'
+ref table 'DimTechnician'
+ref table 'DimServiceType'
+ref table 'DimModel'
+ref table 'parts'
+ref table 'part_usage'
+ref table '_Measures'

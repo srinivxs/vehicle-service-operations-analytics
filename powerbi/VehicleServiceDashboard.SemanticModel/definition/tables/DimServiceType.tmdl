@@ -1,0 +1,25 @@
+table 'DimServiceType'
+	lineageTag: a0990cb1-d852-58a4-8d5d-210b58185ceb
+
+	column 'service_type'
+		dataType: string
+		lineageTag: 80c37755-676b-5b50-baab-c19f3d0a5b05
+		summarizeBy: none
+		sourceColumn: service_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DimServiceType' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_appointments.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Selected = Table.SelectColumns(Promoted, {"requested_service_type"}),
+				    Renamed = Table.RenameColumns(Selected, {{"requested_service_type", "service_type"}}),
+				    Distinct = Table.Distinct(Renamed),
+				    Typed = Table.TransformColumnTypes(Distinct, {{"service_type", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

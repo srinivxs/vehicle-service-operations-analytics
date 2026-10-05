@@ -1,0 +1,214 @@
+table 'fact_appointments'
+	lineageTag: bd5fce03-72dd-5591-b4c8-f94e9b10a0ae
+
+	column 'appointment_id'
+		dataType: string
+		lineageTag: 14dd0960-00b4-5bb3-9973-f1ea012426e3
+		summarizeBy: none
+		sourceColumn: appointment_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'vehicle_id'
+		dataType: string
+		lineageTag: c5bcd57d-f5a4-5684-8252-32421c228985
+		summarizeBy: none
+		sourceColumn: vehicle_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'center_id'
+		dataType: string
+		lineageTag: ea3ee0ef-f43d-5b52-bf87-191f0dea7701
+		summarizeBy: none
+		sourceColumn: center_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scheduled_slot'
+		dataType: string
+		lineageTag: d5a6f8f3-0b76-5ac3-a4cb-e8b68e4c8198
+		summarizeBy: none
+		sourceColumn: scheduled_slot
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'booking_channel'
+		dataType: string
+		lineageTag: df96cdad-a21d-5fd7-9c4f-c7e1fbb6a835
+		summarizeBy: none
+		sourceColumn: booking_channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'requested_service_type'
+		dataType: string
+		lineageTag: 2ba73af2-1d00-55b4-9f55-f1430c54d277
+		summarizeBy: none
+		sourceColumn: requested_service_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'status'
+		dataType: string
+		lineageTag: 74986402-b875-55cc-9c80-a5372e150066
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'cancellation_reason'
+		dataType: string
+		lineageTag: 9616561a-da3d-53ba-b678-521b9a7b3395
+		summarizeBy: none
+		sourceColumn: cancellation_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'customer_id'
+		dataType: string
+		lineageTag: 5d84f72c-52e5-5286-a388-5924d967b607
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'model'
+		dataType: string
+		lineageTag: 44251291-58ec-5dcf-bd00-300779fd2b4f
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'vehicle_category'
+		dataType: string
+		lineageTag: de188616-c466-57ce-afba-7518bfcb7d2d
+		summarizeBy: none
+		sourceColumn: vehicle_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'customer_type'
+		dataType: string
+		lineageTag: ce80c35e-9c97-5e72-9bba-20386bc65e55
+		summarizeBy: none
+		sourceColumn: customer_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'center_name'
+		dataType: string
+		lineageTag: d2f709a0-3197-5d5f-8742-cfeee7bf3005
+		summarizeBy: none
+		sourceColumn: center_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'region'
+		dataType: string
+		lineageTag: 93e87cf9-0a2f-5338-9e17-d78efce959bd
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'lead_time_band'
+		dataType: string
+		lineageTag: e10b2ce6-6a6f-5caf-8a57-c7483281ed92
+		summarizeBy: none
+		sourceColumn: lead_time_band
+		sortByColumn: 'Lead Band Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'weekday'
+		dataType: string
+		lineageTag: aad29cb6-bc1f-581c-b757-d265be326954
+		summarizeBy: none
+		sourceColumn: weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'month'
+		dataType: string
+		lineageTag: fe2c7a99-8eac-5eb1-a1eb-17264ed64f99
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'booking_date'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 367de8e2-4f6a-5e26-99c2-2d6f8b5b6ed4
+		summarizeBy: none
+		sourceColumn: booking_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'scheduled_date'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 5dbe4a57-11cc-5aa7-9f6d-e913feb51e0c
+		summarizeBy: none
+		sourceColumn: scheduled_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'lead_days'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1de56190-f24e-51b0-a6df-e57c7050d843
+		summarizeBy: none
+		sourceColumn: lead_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'is_cancelled'
+		dataType: boolean
+		lineageTag: f59eb917-e7ae-5c1c-b02e-4120e17f6911
+		summarizeBy: none
+		sourceColumn: is_cancelled
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'is_no_show'
+		dataType: boolean
+		lineageTag: 7c5518a1-8d4c-5517-ba62-833adbc69e88
+		summarizeBy: none
+		sourceColumn: is_no_show
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'is_completed'
+		dataType: boolean
+		lineageTag: 3ccc87b1-9ced-51a6-b8ef-339eb3f68fdc
+		summarizeBy: none
+		sourceColumn: is_completed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Lead Band Sort'
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: 69f8fbf1-ec34-5792-a99f-88bbf8fe367d
+		summarizeBy: none
+		sourceColumn: Lead Band Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'fact_appointments' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_appointments.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Blanks = Table.ReplaceValue(Promoted, "", null, Replacer.ReplaceValue, Table.ColumnNames(Promoted)),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"appointment_id", type text}, {"vehicle_id", type text}, {"center_id", type text}, {"scheduled_slot", type text}, {"booking_channel", type text}, {"requested_service_type", type text}, {"status", type text}, {"cancellation_reason", type text}, {"customer_id", type text}, {"model", type text}, {"vehicle_category", type text}, {"customer_type", type text}, {"center_name", type text}, {"region", type text}, {"lead_time_band", type text}, {"weekday", type text}, {"month", type text}, {"booking_date", type date}, {"scheduled_date", type date}, {"lead_days", Int64.Type}, {"is_cancelled", type logical}, {"is_no_show", type logical}, {"is_completed", type logical}}, "en-US"),
+				    Added1 = Table.AddColumn(Typed, "Lead Band Sort", each List.PositionOf({"Same day","1-3 days","4-7 days","8-14 days","15+ days"}, [lead_time_band]) + 1, Int64.Type)
+				in
+				    Added1
+
+	annotation PBI_ResultType = Table

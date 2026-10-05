@@ -1,0 +1,500 @@
+table 'fact_service'
+	lineageTag: 16391704-3a94-5535-8457-bfe16aea66c3
+
+	column 'work_order_id'
+		dataType: string
+		lineageTag: d453c8c9-6b37-590a-a862-f34d10dd2a9e
+		summarizeBy: none
+		sourceColumn: work_order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'appointment_id'
+		dataType: string
+		lineageTag: e4a57547-0050-5692-a59a-88442fb07fbd
+		summarizeBy: none
+		sourceColumn: appointment_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'technician_id'
+		dataType: string
+		lineageTag: 2bd6b492-e47b-5925-99ca-3b88c698a68a
+		summarizeBy: none
+		sourceColumn: technician_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'service_type'
+		dataType: string
+		lineageTag: bc1e3147-3b24-55b5-936a-0d34db3b54cf
+		summarizeBy: none
+		sourceColumn: service_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'vehicle_id'
+		dataType: string
+		lineageTag: 909e0eb3-38b7-5bf3-9fa1-45be31f0f36f
+		summarizeBy: none
+		sourceColumn: vehicle_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'center_id'
+		dataType: string
+		lineageTag: 216e7ad5-ca53-5f51-acc9-823872cb34ba
+		summarizeBy: none
+		sourceColumn: center_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'booking_channel'
+		dataType: string
+		lineageTag: ea683f9a-67e5-56e2-89fc-89ebcb328c4e
+		summarizeBy: none
+		sourceColumn: booking_channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'customer_id'
+		dataType: string
+		lineageTag: c6ba8780-2d40-5f3b-85da-738b1136fa5a
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'model'
+		dataType: string
+		lineageTag: d38b7cc0-cd4d-532e-b82c-83b9d588043e
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'variant'
+		dataType: string
+		lineageTag: a447582a-6ef2-5a15-8ae7-ca310e6be25b
+		summarizeBy: none
+		sourceColumn: variant
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'vehicle_category'
+		dataType: string
+		lineageTag: f86d8087-8bdb-561e-908e-5f060c7527a6
+		summarizeBy: none
+		sourceColumn: vehicle_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'customer_type'
+		dataType: string
+		lineageTag: 0dfa2feb-e292-57cf-a35a-d6727c66e41b
+		summarizeBy: none
+		sourceColumn: customer_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'center_name'
+		dataType: string
+		lineageTag: eadb8476-a599-5ea2-9b4e-74ebd6a37e02
+		summarizeBy: none
+		sourceColumn: center_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'city'
+		dataType: string
+		lineageTag: 19de475d-91a6-5f80-9e22-70ad8dc737a6
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'region'
+		dataType: string
+		lineageTag: dcd88aa4-d211-5626-981b-85751fa9c8a8
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'skill_level'
+		dataType: string
+		lineageTag: 5db9bd3f-0176-58c2-a4cf-47874b8ad7b1
+		summarizeBy: none
+		sourceColumn: skill_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'billing_type'
+		dataType: string
+		lineageTag: 9a4abb76-fd68-5d6e-bfd7-d2fdd1b7f38b
+		summarizeBy: none
+		sourceColumn: billing_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'feedback_category'
+		dataType: string
+		lineageTag: 42dc24c7-6947-5417-893c-b41d52a2e3ca
+		summarizeBy: none
+		sourceColumn: feedback_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'month'
+		dataType: string
+		lineageTag: 1fd18540-132a-5d18-9087-04e22fa94fd9
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'check_in_time'
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: 30432f2c-d45b-5a0f-aa56-f9a7bf4e0130
+		summarizeBy: none
+		sourceColumn: check_in_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'start_time'
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: ef7b1bce-a050-5979-abfa-cf6ef83fa801
+		summarizeBy: none
+		sourceColumn: start_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'end_time'
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: 5f7d953e-fd3d-5ff1-a418-7ad991227edb
+		summarizeBy: none
+		sourceColumn: end_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'promised_ready_time'
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		lineageTag: c8d93126-f7d2-5a6c-b25c-bee5f3f71ce0
+		summarizeBy: none
+		sourceColumn: promised_ready_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'service_date'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 01901d12-930f-53e8-8995-9febc0805e99
+		summarizeBy: none
+		sourceColumn: service_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'estimated_hours'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: e688afd7-15c9-5e5e-80d9-6fd0dc62f759
+		summarizeBy: none
+		sourceColumn: estimated_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'actual_hours'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: c19c3eda-6680-567c-89b6-e5abb29f1ae4
+		summarizeBy: none
+		sourceColumn: actual_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'parts_wait_hours'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: adbf8765-503f-5a0f-911d-99c36f87ebb6
+		summarizeBy: none
+		sourceColumn: parts_wait_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'estimated_cost'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 3c700e2a-9376-5be9-bbaf-ffb60ff16d89
+		summarizeBy: none
+		sourceColumn: estimated_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'labor_cost'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 2614bd4a-2f6e-5d48-a7ff-6966bf71ab65
+		summarizeBy: none
+		sourceColumn: labor_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'parts_cost'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 17330853-279c-5535-bd98-730bfce12d73
+		summarizeBy: none
+		sourceColumn: parts_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'revenue'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 0275800f-1726-5041-a6e5-d85b1b9dd6a6
+		summarizeBy: none
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'wait_hours'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 9a923bca-fbd8-5030-891c-5a90819081f7
+		summarizeBy: none
+		sourceColumn: wait_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'turnaround_hours'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 00ba189a-c972-5bb1-bc63-89a4afd569df
+		summarizeBy: none
+		sourceColumn: turnaround_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'late_hours'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: d595a750-c69c-574f-8035-412af8d1300b
+		summarizeBy: none
+		sourceColumn: late_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'duration_variance_hours'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 20dec035-54a9-5383-ad77-25ee6908d06b
+		summarizeBy: none
+		sourceColumn: duration_variance_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'total_cost'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 7ad3e2c6-aa39-55f1-9da2-16f941716acc
+		summarizeBy: none
+		sourceColumn: total_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'profit'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 55767ed2-c7f6-5e88-86f2-8cdd96345821
+		summarizeBy: none
+		sourceColumn: profit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'cost_variance'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 0becc965-6567-5dd3-a124-ab0bdebbeddc
+		summarizeBy: none
+		sourceColumn: cost_variance
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'cost_variance_pct'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 705bd0c0-4a63-5c8c-b96c-db6fb61ebc6d
+		summarizeBy: none
+		sourceColumn: cost_variance_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'vehicle_age_years'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 646dd37c-4d4a-5bee-8ab0-0a41d54f83e3
+		summarizeBy: none
+		sourceColumn: vehicle_age_years
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'days_since_same_service'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: bb083870-be18-5a28-be62-19a36f8d999f
+		summarizeBy: none
+		sourceColumn: days_since_same_service
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'odometer_km'
+		dataType: int64
+		formatString: 0
+		lineageTag: 942d439d-27b8-550d-93bf-a2ca7f0ba6f0
+		summarizeBy: none
+		sourceColumn: odometer_km
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'rating'
+		dataType: int64
+		formatString: 0
+		lineageTag: ecf08a13-592c-5250-9dcc-2413704d07bc
+		summarizeBy: none
+		sourceColumn: rating
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'year'
+		dataType: int64
+		formatString: 0
+		lineageTag: accb200d-9731-5207-86ea-9baa11a19abf
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'customer_visit_number'
+		dataType: int64
+		formatString: 0
+		lineageTag: b1ce516d-43b1-5031-a20d-35438179f3c1
+		summarizeBy: none
+		sourceColumn: customer_visit_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'additional_work_found'
+		dataType: boolean
+		lineageTag: b186c34a-2ac0-57bd-bcf0-0e98e0f4116e
+		summarizeBy: none
+		sourceColumn: additional_work_found
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'qc_passed_first_time'
+		dataType: boolean
+		lineageTag: 1a80a602-1f91-5480-a9ad-5ae0bcfca4bc
+		summarizeBy: none
+		sourceColumn: qc_passed_first_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'on_time_flag'
+		dataType: boolean
+		lineageTag: 5decf8f9-864f-5f67-91eb-ba63a8c6270f
+		summarizeBy: none
+		sourceColumn: on_time_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'parts_delay_flag'
+		dataType: boolean
+		lineageTag: 40d70769-0e01-57de-888b-7b93297ff396
+		summarizeBy: none
+		sourceColumn: parts_delay_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'cost_overrun_flag'
+		dataType: boolean
+		lineageTag: 9866df55-cc8f-5434-834d-a2c1605fc87c
+		summarizeBy: none
+		sourceColumn: cost_overrun_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'is_repeat_visit'
+		dataType: boolean
+		lineageTag: 71a31761-b228-583b-a8ba-07c01eb18926
+		summarizeBy: none
+		sourceColumn: is_repeat_visit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'caused_repeat_visit'
+		dataType: boolean
+		lineageTag: a2585c8c-20ed-5cfd-9925-12c9393fc3d6
+		summarizeBy: none
+		sourceColumn: caused_repeat_visit
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delay Band'
+		dataType: string
+		lineageTag: 1116b62f-8f16-5f30-a06e-2144b8fd873b
+		summarizeBy: none
+		sourceColumn: Delay Band
+		sortByColumn: 'Delay Band Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Delay Band Sort'
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: 29c232b7-383e-5bbb-932d-c98b8e02c2fd
+		summarizeBy: none
+		sourceColumn: Delay Band Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Turnaround Band'
+		dataType: string
+		lineageTag: b440b723-6178-5b39-8829-05bad8edefa9
+		summarizeBy: none
+		sourceColumn: Turnaround Band
+		sortByColumn: 'Turnaround Band Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Turnaround Band Sort'
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: 6ba7aafe-20af-500a-9b65-a0094a067670
+		summarizeBy: none
+		sourceColumn: Turnaround Band Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'fact_service' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_service.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Blanks = Table.ReplaceValue(Promoted, "", null, Replacer.ReplaceValue, Table.ColumnNames(Promoted)),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"work_order_id", type text}, {"appointment_id", type text}, {"technician_id", type text}, {"service_type", type text}, {"vehicle_id", type text}, {"center_id", type text}, {"booking_channel", type text}, {"customer_id", type text}, {"model", type text}, {"variant", type text}, {"vehicle_category", type text}, {"customer_type", type text}, {"center_name", type text}, {"city", type text}, {"region", type text}, {"skill_level", type text}, {"billing_type", type text}, {"feedback_category", type text}, {"month", type text}, {"check_in_time", type datetime}, {"start_time", type datetime}, {"end_time", type datetime}, {"promised_ready_time", type datetime}, {"service_date", type date}, {"estimated_hours", type number}, {"actual_hours", type number}, {"parts_wait_hours", type number}, {"estimated_cost", type number}, {"labor_cost", type number}, {"parts_cost", type number}, {"revenue", type number}, {"wait_hours", type number}, {"turnaround_hours", type number}, {"late_hours", type number}, {"duration_variance_hours", type number}, {"total_cost", type number}, {"profit", type number}, {"cost_variance", type number}, {"cost_variance_pct", type number}, {"vehicle_age_years", type number}, {"days_since_same_service", type number}, {"odometer_km", Int64.Type}, {"rating", Int64.Type}, {"year", Int64.Type}, {"customer_visit_number", Int64.Type}, {"additional_work_found", type logical}, {"qc_passed_first_time", type logical}, {"on_time_flag", type logical}, {"parts_delay_flag", type logical}, {"cost_overrun_flag", type logical}, {"is_repeat_visit", type logical}, {"caused_repeat_visit", type logical}}, "en-US"),
+				    Filled = Table.TransformColumns(Typed, {{"technician_id", each if _ = null then "UNASSIGNED" else _, type text}, {"skill_level", each if _ = null then "Unassigned" else _, type text}}),
+				    Added1 = Table.AddColumn(Filled, "Delay Band", each if [late_hours] = null then null else if [late_hours] <= 0 then "On time" else if [late_hours] <= 1 then "0-1h" else if [late_hours] <= 2 then "1-2h" else if [late_hours] <= 4 then "2-4h" else if [late_hours] <= 8 then "4-8h" else if [late_hours] <= 24 then "8-24h" else "> 24h", type text),
+				    Added2 = Table.AddColumn(Added1, "Delay Band Sort", each List.PositionOf({"On time","0-1h","1-2h","2-4h","4-8h","8-24h","> 24h"}, [Delay Band]) + 1, Int64.Type),
+				    Added3 = Table.AddColumn(Added2, "Turnaround Band", each if [turnaround_hours] = null then null else if [turnaround_hours] <= 2 then "<= 2h" else if [turnaround_hours] <= 4 then "2-4h" else if [turnaround_hours] <= 8 then "4-8h" else if [turnaround_hours] <= 24 then "8-24h" else if [turnaround_hours] <= 72 then "24-72h" else "> 72h", type text),
+				    Added4 = Table.AddColumn(Added3, "Turnaround Band Sort", each List.PositionOf({"<= 2h","2-4h","4-8h","8-24h","24-72h","> 72h"}, [Turnaround Band]) + 1, Int64.Type)
+				in
+				    Added4
+
+	annotation PBI_ResultType = Table

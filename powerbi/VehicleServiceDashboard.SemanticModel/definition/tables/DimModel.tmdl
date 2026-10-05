@@ -1,0 +1,32 @@
+table 'DimModel'
+	lineageTag: 7705fb4e-8c4d-5aad-8a52-9778c84f69ab
+
+	column 'model'
+		dataType: string
+		lineageTag: 5375b2e1-88a2-5aa2-84ef-b004e9ebc6bb
+		summarizeBy: none
+		sourceColumn: model
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'vehicle_category'
+		dataType: string
+		lineageTag: 98b52cf2-822c-5748-8db0-2f09c7bd5d11
+		summarizeBy: none
+		sourceColumn: vehicle_category
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DimModel' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "vehicles.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Selected = Table.SelectColumns(Promoted, {"model", "vehicle_category"}),
+				    Distinct = Table.Distinct(Selected, {"model"}),
+				    Typed = Table.TransformColumnTypes(Distinct, {{"model", type text}, {"vehicle_category", type text}})
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -72,7 +72,7 @@ flowchart LR
     E --> F[sql/views.sql + kpi_queries.sql<br/>21 business queries]
     D --> G[notebooks/ EDA + statistics]
     D --> H[Streamlit dashboard<br/>4 pages]
-    D --> P[Power BI kit<br/>DAX + theme + build guide]
+    D --> P[Power BI report<br/>star schema + 65 DAX measures]
     G --> I[docs/findings → root causes → recommendations]
     F --> I
 ```
@@ -81,7 +81,7 @@ flowchart LR
 |---|---|
 | Data generation, cleaning and EDA | Python 3.11, pandas, NumPy, SciPy, Matplotlib, Seaborn, Jupyter |
 | Database and SQL | PostgreSQL 16 (Docker), psycopg 3: joins, CTEs, window functions, views |
-| Dashboard | Streamlit + Plotly (runs locally); Power BI kit with 65 DAX measures, theme and page specs |
+| Dashboard | Power BI report (`.pbix` + Power BI Project, 65 DAX measures) and a Streamlit + Plotly app (runs locally) |
 | Quality | pytest: unit, integration and app smoke tests |
 
 ## Quick start
@@ -155,8 +155,12 @@ service type and model apply to every KPI and chart on every page.
 | **Financial Analysis** | **Customer Experience** |
 | ![](docs/images/dashboard_03_financial_analysis.png) | ![](docs/images/dashboard_04_customer_experience.png) |
 
-Power BI Desktop users can rebuild the same report from [`powerbi/README.md`](powerbi/README.md). It covers the
-star schema, the DAX measures, the theme, a page-by-page layout and reconciliation values for acceptance testing.
+![Power BI report: Executive Overview](docs/images/powerbi_executive_overview.png)
+
+The same four pages are available as a Power BI report: open
+[`powerbi/vehicle_service_dashboard.pbix`](powerbi/vehicle_service_dashboard.pbix) in Power BI Desktop. Its model
+(star schema, 65 DAX measures) is generated as a Power BI Project by `powerbi/generate_pbip.py`, and its KPIs were
+verified against the Python and SQL results. See [`powerbi/README.md`](powerbi/README.md).
 
 ## Repository map
 
@@ -165,7 +169,7 @@ star schema, the DAX measures, the theme, a page-by-page layout and reconciliati
 ├── sql/                 schema.sql · data_quality.sql · views.sql · kpi_queries.sql · README (ER diagram)
 ├── notebooks/           01_data_generation · 02_data_quality · 03_exploratory_analysis (executed)
 ├── app/                 Streamlit dashboard (4 pages, shared filters)
-├── powerbi/             DAX measures · theme JSON · build guide
+├── powerbi/             .pbix report · Power BI Project (TMDL/PBIR) + generator · DAX · theme
 ├── docs/                BRD · process map · data dictionary · data lineage · findings · root cause · recommendations
 ├── reports/             data-quality report · SQL results · analysis metrics · figures/
 ├── data/raw, cleaned/   generated CSVs (reproducible from seed)

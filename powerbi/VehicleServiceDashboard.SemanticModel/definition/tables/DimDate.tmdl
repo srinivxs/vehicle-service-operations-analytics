@@ -1,0 +1,115 @@
+table 'DimDate'
+	lineageTag: ee49463e-0e22-59d3-b7f3-d159768857d5
+	dataCategory: Time
+
+	column 'date'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		isKey
+		lineageTag: 5d2e47b3-56df-5b11-ae62-1c4b8057cf6a
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'year'
+		dataType: int64
+		formatString: 0
+		lineageTag: e5c230ac-3365-526c-9204-9dcdc248ecb3
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'month_number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7795bfef-4535-5212-a863-93fbce12d0b4
+		summarizeBy: none
+		sourceColumn: month_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'weekday_number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 85aa38c1-2644-573d-b4d9-ef065380d242
+		summarizeBy: none
+		sourceColumn: weekday_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'quarter'
+		dataType: string
+		lineageTag: 6640a315-2fe1-5598-b1c8-8679470ac360
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'month_name'
+		dataType: string
+		lineageTag: b07fd1c5-7a84-54e4-b9b1-2646e79efc79
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: 'month_number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'year_month'
+		dataType: string
+		lineageTag: 306c9eb6-cd9e-5eaa-99de-0777a8a03a69
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'weekday_name'
+		dataType: string
+		lineageTag: 94f2767f-5f2d-5688-ab9c-fd874e5836fa
+		summarizeBy: none
+		sourceColumn: weekday_name
+		sortByColumn: 'weekday_number'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'is_working_day'
+		dataType: boolean
+		lineageTag: a05efe9a-169a-5000-bda2-e18c1a4f13d0
+		summarizeBy: none
+		sourceColumn: is_working_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'month_start'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 79f49b62-781e-587c-aad8-611a3eab6dce
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Label'
+		dataType: string
+		lineageTag: acc38e9c-dcc1-5d6e-afc1-15ef54cd34c9
+		summarizeBy: none
+		sourceColumn: Month Label
+		sortByColumn: 'month_start'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DimDate' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_date.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Blanks = Table.ReplaceValue(Promoted, "", null, Replacer.ReplaceValue, Table.ColumnNames(Promoted)),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"date", type date}, {"year", Int64.Type}, {"month_number", Int64.Type}, {"weekday_number", Int64.Type}, {"quarter", type text}, {"month_name", type text}, {"year_month", type text}, {"weekday_name", type text}, {"is_working_day", type logical}}, "en-US"),
+				    Added1 = Table.AddColumn(Typed, "month_start", each Date.StartOfMonth([date]), type date),
+				    Added2 = Table.AddColumn(Added1, "Month Label", each Date.ToText([date], [Format="MMM yy", Culture="en-US"]), type text)
+				in
+				    Added2
+
+	annotation PBI_ResultType = Table

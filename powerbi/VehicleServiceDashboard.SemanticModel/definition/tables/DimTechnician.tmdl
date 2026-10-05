@@ -1,0 +1,87 @@
+table 'DimTechnician'
+	lineageTag: d2c0c4df-e4ac-5e27-bdc6-481c69becba7
+
+	column 'technician_id'
+		dataType: string
+		lineageTag: d94f5f6e-b9ba-5273-9e76-943a56cbf055
+		summarizeBy: none
+		sourceColumn: technician_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'center_id'
+		dataType: string
+		lineageTag: 02008174-f9fe-5be2-be1c-b26912d46365
+		summarizeBy: none
+		sourceColumn: center_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'skill_level'
+		dataType: string
+		lineageTag: f050f35e-abcb-5919-9795-07639b47ed70
+		summarizeBy: none
+		sourceColumn: skill_level
+		sortByColumn: 'Skill Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'certification'
+		dataType: string
+		lineageTag: c15e3a16-6ca2-5718-ae44-f5b6f6d18831
+		summarizeBy: none
+		sourceColumn: certification
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'years_experience'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f46d110-1aa9-5fe9-943d-2e1ebc16be04
+		summarizeBy: none
+		sourceColumn: years_experience
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'shift_hours_per_day'
+		dataType: int64
+		formatString: 0
+		lineageTag: 900aa2b6-6b55-5b05-a751-202ca65280c4
+		summarizeBy: none
+		sourceColumn: shift_hours_per_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'hourly_cost'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 74d81964-52e2-5b2e-a81e-0d8fa65a8513
+		summarizeBy: none
+		sourceColumn: hourly_cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Skill Sort'
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: eea7bd37-c112-59b0-9c2d-821eec323ae3
+		summarizeBy: none
+		sourceColumn: Skill Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DimTechnician' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "technicians.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Blanks = Table.ReplaceValue(Promoted, "", null, Replacer.ReplaceValue, Table.ColumnNames(Promoted)),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"technician_id", type text}, {"center_id", type text}, {"skill_level", type text}, {"certification", type text}, {"years_experience", Int64.Type}, {"shift_hours_per_day", Int64.Type}, {"hourly_cost", type number}}, "en-US"),
+				    Appended = Table.InsertRows(Typed, Table.RowCount(Typed), {[technician_id = "UNASSIGNED", center_id = null, skill_level = "Unassigned", certification = "Not recorded", years_experience = null, shift_hours_per_day = null, hourly_cost = null]}),
+				    Added1 = Table.AddColumn(Appended, "Skill Sort", each List.PositionOf({"Junior","Mid","Senior","Master","Unassigned"}, [skill_level]) + 1, Int64.Type)
+				in
+				    Added1
+
+	annotation PBI_ResultType = Table

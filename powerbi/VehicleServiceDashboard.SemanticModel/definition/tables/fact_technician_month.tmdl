@@ -1,0 +1,120 @@
+table 'fact_technician_month'
+	lineageTag: 6e4e9ad0-e87a-5457-8ee8-8dae62749b28
+
+	column 'technician_id'
+		dataType: string
+		lineageTag: 2a6ee85c-da68-5775-b2fc-ea531fde0557
+		summarizeBy: none
+		sourceColumn: technician_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'center_id'
+		dataType: string
+		lineageTag: 16f2ca84-bc56-5b91-8c18-19a61584f895
+		summarizeBy: none
+		sourceColumn: center_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'skill_level'
+		dataType: string
+		lineageTag: 79aebdfd-a216-5f7b-9515-af5a10fd0f19
+		summarizeBy: none
+		sourceColumn: skill_level
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'month'
+		dataType: string
+		lineageTag: 1dfd82c4-2ec9-56ab-a327-14efcc84c81f
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'working_days'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3da2416a-2fd5-5fb3-a15f-a081fd7c2a40
+		summarizeBy: none
+		sourceColumn: working_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'jobs'
+		dataType: int64
+		formatString: 0
+		lineageTag: 87407317-79fe-5090-8555-06e4436dedad
+		summarizeBy: none
+		sourceColumn: jobs
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'service_hours'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 13b38a94-8810-572e-8272-8026b37ff0e8
+		summarizeBy: none
+		sourceColumn: service_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'qc_first_pass'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: dde9801e-60c5-5fd3-a81f-71a83e7a5721
+		summarizeBy: none
+		sourceColumn: qc_first_pass
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'comebacks_caused'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: fd675572-3e8b-5215-b323-9bbc5adb8418
+		summarizeBy: none
+		sourceColumn: comebacks_caused
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'available_hours'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: e9188e85-578b-5dc4-9d10-ebceee1ba530
+		summarizeBy: none
+		sourceColumn: available_hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'utilisation'
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 40972984-8b8c-58f4-9609-760dc49fc5d1
+		summarizeBy: none
+		sourceColumn: utilisation
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'month_start'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 2443a04a-7308-5651-9605-35f43a7b2413
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'fact_technician_month' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_technician_month.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Blanks = Table.ReplaceValue(Promoted, "", null, Replacer.ReplaceValue, Table.ColumnNames(Promoted)),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"technician_id", type text}, {"center_id", type text}, {"skill_level", type text}, {"month", type text}, {"working_days", Int64.Type}, {"jobs", Int64.Type}, {"service_hours", type number}, {"qc_first_pass", type number}, {"comebacks_caused", type number}, {"available_hours", type number}, {"utilisation", type number}}, "en-US"),
+				    Added1 = Table.AddColumn(Typed, "month_start", each Date.FromText([month] & "-01", [Format="yyyy-MM-dd", Culture="en-US"]), type date)
+				in
+				    Added1
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,4 @@
+expression DataFolder = "C:\Vehicle_Service_Operations_Analytics\data\cleaned\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 0aaccc24-4fd7-5ee1-9b99-534cd1b8184b
+
+	annotation PBI_ResultType = Text
